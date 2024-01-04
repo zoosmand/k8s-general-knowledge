@@ -1,0 +1,35 @@
+# You can only configure a Pod failure policy for a Job if you have the JobPodFailurePolicy feature gate enabled in your cluster
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jtest
+spec:
+  completions: 6
+  parallelism: 3
+  completionMode: Indexed
+  # --- Kubernetes 1.28 ---
+  # backoffLimitPerIndex: 1
+  # maxFailedIndexes: 2
+  backoffLimit: 4
+  template:
+    spec:
+      containers:
+      - name: jtest-01
+        image: busybox:1.36
+        command: ["shs", "-c", "sleep 10; echo \"Hello World!\""]
+      restartPolicy: Never
+  
+  podFailurePolicy:
+    rules:
+    - action: FailJob
+      onExitCodes:
+        containerName: jtest-01       # optional
+        operator: In                  # one of: In, NotIn
+        values: [42]
+    - action: Ignore                  # one of: Ignore, FailJob, Count
+      onPodConditions:
+      - type: DisruptionTarget
+        status: "False"               # indicates Pod disruption
+
+...

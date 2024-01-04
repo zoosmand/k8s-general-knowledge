@@ -1,0 +1,41 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+
+metadata:
+  namespace: default
+  name: operator
+
+rules:
+  - apiGroups: ["", "apps", "extensions"]
+    resources: ["deployments", "daemonsets", "services", "statefulsets", "pods", "replicasets"]
+    verbs: ["*"]
+
+  - apiGroups: [""]
+    resources: ["pods/ephemeralcontainers", "pods/log", "pods/attach"]
+    verbs: ["*"]
+
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["*"]
+
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch", "create", "update", "delete"]
+
+  - apiGroups: ["batch"]
+    resources: ["cronjobs", "jobs"]
+    verbs: ["*"]
+
+  - apiGroups: ["extensions"]
+    resources: [""]
+    verbs: [""]
+
+  - apiGroups: ["", "autoscaling"]
+    resources: ["replicationcontrollers", "horizontalpodautoscalers"]
+    verbs: ["get", "list", "watch"]
+
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources: ["roles", "rolebindings"]
+    verbs: ["list"]
+
+...

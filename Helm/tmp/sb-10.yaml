@@ -1,0 +1,116 @@
+NAME: sb-10
+LAST DEPLOYED: Tue Oct 10 18:03:57 2023
+NAMESPACE: monitoring
+STATUS: pending-install
+REVISION: 1
+HOOKS:
+---
+# Source: sb-10/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "sb-10-test-connection"
+  labels:
+    helm.sh/chart: sb-10-0.0.0
+    app.kubernetes.io/name: sb-10
+    app.kubernetes.io/instance: sb-10
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['sb-10:80']
+  restartPolicy: Never
+MANIFEST:
+---
+# Source: sb-10/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sb-10
+  labels:
+    helm.sh/chart: sb-10-0.0.0
+    app.kubernetes.io/name: sb-10
+    app.kubernetes.io/instance: sb-10
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: sb-10/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sb-10
+  labels:
+    helm.sh/chart: sb-10-0.0.0
+    app.kubernetes.io/name: sb-10
+    app.kubernetes.io/instance: sb-10
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: sb-10
+    app.kubernetes.io/instance: sb-10
+---
+# Source: sb-10/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sb-10
+  labels:
+    helm.sh/chart: sb-10-0.0.0
+    app.kubernetes.io/name: sb-10
+    app.kubernetes.io/instance: sb-10
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sb-10
+      app.kubernetes.io/instance: sb-10
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sb-10
+        app.kubernetes.io/instance: sb-10
+    spec:
+      serviceAccountName: sb-10
+      securityContext:
+        {}
+      containers:
+        - name: sb-10
+          securityContext:
+            {}
+          image: "nginx:1.25"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {}
+
+# NOTES:
+# 1. Get the application URL by running these commands:
+#   export POD_NAME=$(kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=sb-10,app.kubernetes.io/instance=sb-10" -o jsonpath="{.items[0].metadata.name}")
+#   export CONTAINER_PORT=$(kubectl get pod --namespace monitoring $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+#   echo "Visit http://127.0.0.1:8080 to use your application"
+#   kubectl --namespace monitoring port-forward $POD_NAME 8080:$CONTAINER_PORT

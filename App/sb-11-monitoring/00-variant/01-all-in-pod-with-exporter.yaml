@@ -1,0 +1,520 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sb-11-monitoring-service-account
+  namespace: monitoring
+automountServiceAccountToken: true
+
+...
+
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sb-11-monitoring-config
+  namespace: monitoring
+immutable: true
+data:
+  prometheus.yml: |+
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 25s
+
+    alerting:
+     alertmanagers:
+       - static_configs:
+           - targets:
+             - localhost:9093
+
+    rule_files:
+      - "moni_rules.yml"
+      - "node_rules.yml"
+
+    scrape_configs:
+      - job_name: "Prometheus"
+        static_configs:
+          - targets: ["localhost:9090"]
+      
+      - job_name: "Pushgateway"
+        honor_labels: true
+        static_configs:
+        - targets: ["localhost:9091"]
+
+      - job_name: "Alertnamager"
+        honor_labels: true
+        static_configs:
+        - targets: ["localhost:9093"]
+
+      - job_name: "Grafana"
+        honor_labels: true
+        static_configs:
+        - targets: ["localhost:3000"]
+
+      - job_name: "Nodes"
+        static_configs:
+          - targets: ["mp8.mira.asart.local:9100", "mp1.mira.asart.local:9100", "localhost:9100"]
+
+  moni_rules.yml: |+
+    groups:
+    - name: MonitoringServices
+      rules:
+      - alert: MonitoringServiceDown
+        expr: up{job=~"Alertnamager|Grafana|Prometheus|Pushgateway"} == 0
+        for: 30s
+        labels:
+          state: red
+        annotations:
+          summary: "Instance {{ $labels.instance }} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
+
+  node_rules.yml: |+
+    groups:
+    - name: Nodes
+      rules:
+      - alert: NodeDown
+        expr: up{job="Nodes"} == 0
+        for: 30s
+        labels:
+          state: red
+        annotations:
+          summary: "Instance {{ $labels.instance }} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
+
+  alertmanager.yml: |+
+    global:
+      resolve_timeout: 5m
+      http_config:
+        follow_redirects: true
+        enable_http2: true
+      smtp_hello: monitoring.askug.net
+      smtp_require_tls: true
+      pagerduty_url: https://events.pagerduty.com/v2/enqueue
+      telegram_api_url: https://api.telegram.org
+
+    route:
+      group_by: ['alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+      receiver: 'web.hook'
+
+      routes:
+      - receiver: 'soc.telegram'
+        matchers:
+        - state = red
+
+    receivers:
+      - name: 'web.hook'
+        webhook_configs:
+          - url: 'https://hooker.askug.net'
+
+      - name: 'soc.telegram'
+        telegram_configs:
+        - bot_token_file: /etc/alertmanager/telegram.token
+          chat_id: 731503652
+          parse_mode: ''
+
+    inhibit_rules:
+      - source_match:
+          severity: 'critical'
+        target_match:
+          severity: 'warning'
+        equal: ['alertname', 'dev', 'instance']
+
+  grafana.ini: |+
+    oh!
+...
+
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sb-11-monitoring-data
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: sb-11
+  storageClassName: node0-local-storage-monitoring
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+...
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: monitoring
+  name: sb-11-monitoring-application
+  labels:
+    app: sb-11
+    test: liveness
+spec:
+  restartPolicy: OnFailure
+  nodeSelector:
+    node-type: worker
+  serviceAccountName: sb-11-monitoring-service-account
+  containers:
+
+    # ----------------------------------------------------
+    - name: testing-pod
+      image: alpine:3.18
+      command: [ "sh", "-c", "echo \"Install OpenSSH\";
+        apk add openssh-server;
+        ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -q -N \"\";
+        sed -i \"s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g\" /etc/ssh/sshd_config;
+        echo \"root:123456\" | chpasswd;
+        /usr/sbin/sshd -D -e -ddd
+        "
+      ]
+      ports:
+      - containerPort: 22
+        name: tcp22
+
+      resources:
+        limits:
+          memory: 256Mi
+          cpu: 500m
+        requests:
+          memory: 128Mi
+          cpu: 250m
+
+
+    # ----------------------------------------------------
+    - name: prometheus
+      image: reg.docker.askug.net:5000/prometheus-sb-11:0.0.2
+
+      livenessProbe:
+        httpGet:
+          path: /-/healthy
+          port: 9090
+        initialDelaySeconds: 5
+        periodSeconds: 5
+
+      readinessProbe:
+        httpGet:
+          path: /-/ready
+          port: 9090
+        initialDelaySeconds: 3
+        periodSeconds: 3
+
+      volumeMounts:
+        - mountPath: "/etc/prometheus/prometheus.yml"
+          name: monitoring-data-config
+          subPath: "prometheus.yml"
+          readOnly: true
+        - mountPath: "/etc/prometheus/moni_rules.yml"
+          name: monitoring-data-config
+          subPath: "moni_rules.yml"
+          readOnly: true
+        - mountPath: "/etc/prometheus/node_rules.yml"
+          name: monitoring-data-config
+          subPath: "node_rules.yml"
+          readOnly: true
+        - mountPath: "/var/lib/prometheus"
+          name: monitoring-data-volume
+          subPath: "caches/prometheus"
+
+      ports:
+      - containerPort: 9090
+        name: tcp9090
+
+      env:
+      - name: PROMETHEUS_VERSION
+        value: 2.47.0
+
+      resources:
+        limits:
+          memory: 4Gi
+          cpu: "4"
+        requests:
+          memory: 2Gi
+          cpu: "2"
+
+    # ----------------------------------------------------
+    - name: pushgateway
+      image: reg.docker.askug.net:5000/pushgateway-sb-11:0.0.2
+
+      livenessProbe:
+        httpGet:
+          path: /-/healthy
+          port: 9091
+        initialDelaySeconds: 5
+        periodSeconds: 5
+
+      readinessProbe:
+        httpGet:
+          path: /-/ready
+          port: 9091
+        initialDelaySeconds: 3
+        periodSeconds: 3
+
+      ports:
+      - containerPort: 9091
+        name: tcp9091
+
+      env:
+      - name: PUSHGATEWAY_VERSION
+        value: 1.6.2
+
+      resources:
+        limits:
+          memory: 256Mi
+          cpu: 500m
+        requests:
+          memory: 128Mi
+          cpu: 250m
+
+    # ----------------------------------------------------
+    - name: alertmanager
+      image: reg.docker.askug.net:5000/alertmanager-sb-11:0.0.2
+
+      livenessProbe:
+        httpGet:
+          path: /-/healthy
+          port: 9093
+        initialDelaySeconds: 5
+        periodSeconds: 5
+
+      readinessProbe:
+        httpGet:
+          path: /-/ready
+          port: 9093
+        initialDelaySeconds: 3
+        periodSeconds: 3
+
+      volumeMounts:
+        - mountPath: "/etc/alertmanager/alertmanager.yml"
+          name: monitoring-data-config
+          subPath: "alertmanager.yml"
+          readOnly: true
+        - mountPath: "/etc/alertmanager/telegram.token"
+          name: monitoring-data-secrets
+          subPath: "telegram.token"
+          readOnly: true
+
+      ports:
+      - containerPort: 9093
+        name: tcp9093
+
+      env:
+      - name: ALERTMANAGER_VERSION
+        value: 0.26.0
+
+      resources:
+        limits:
+          memory: 256Mi
+          cpu: 500m
+        requests:
+          memory: 128Mi
+          cpu: 250m
+  
+    # ----------------------------------------------------
+    - name: grafana
+      image: reg.docker.askug.net:5000/grafana-sb-11:0.0.2
+
+      livenessProbe:
+        httpGet:
+          path: /api/health
+          port: 3000
+        initialDelaySeconds: 5
+        periodSeconds: 5
+
+      readinessProbe:
+        httpGet:
+          path: /healthz
+          port: 3000
+        initialDelaySeconds: 3
+        periodSeconds: 3
+
+      volumeMounts:
+        - mountPath: "/opt/grafana/data"
+          name: monitoring-data-volume
+          subPath: "caches/grafana/data"
+        - mountPath: "/opt/grafana/conf"
+          name: monitoring-data-volume
+          subPath: "caches/grafana/conf"
+
+      ports:
+      - containerPort: 3000
+        name: tcp3000
+
+      env:
+      - name: GRAFANA_VERSION
+        value: 10.1.1
+      - name: GF_PATHS_CONFIG
+        value: /opt/grafana/conf/grafana.ini
+
+      resources:
+        limits:
+          memory: 4Gi
+          cpu: "4"
+        requests:
+          memory: 2Gi
+          cpu: "2"
+
+    # ----------------------------------------------------
+    - name: nodeexporter
+      image: reg.docker.askug.net:5000/nodeexporter-sb-11:0.0.2
+      args: [ "--path.rootfs=/host" ]
+
+      livenessProbe:
+        httpGet:
+          path: /-/healthy
+          port: 9100
+        initialDelaySeconds: 5
+        periodSeconds: 5
+
+      readinessProbe:
+        httpGet:
+          path: /-/ready
+          port: 9100
+        initialDelaySeconds: 3
+        periodSeconds: 3
+
+      volumeMounts:
+        - mountPath: "/host"
+          name: host-to-monitor
+          readOnly: true
+
+      ports:
+      - containerPort: 9100
+        name: tcp9100
+
+      env:
+      - name: HODE_EXPORTER_VERSION
+        value: 1.6.1
+
+      resources:
+        limits:
+          memory: 256Mi
+          cpu: 500m
+        requests:
+          memory: 128Mi
+          cpu: 250m
+
+  volumes:
+    - name: monitoring-data-secrets
+      secret:
+        secretName: sb-11-monitoring-secrets
+    - name: monitoring-data-config
+      configMap:
+        name: sb-11-monitoring-config
+    - name: monitoring-data-volume
+      persistentVolumeClaim:
+        claimName: sb-11-monitoring-data
+    - name: host-to-monitor
+      hostPath:
+        path: /
+        type: Directory
+
+...
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sb-11-monitoring-service
+  namespace: monitoring
+spec:
+  selector:
+    app: sb-11
+  type: LoadBalancer
+  loadBalancerIP: 10.203.10.25
+  ports:
+    - protocol: TCP
+      name: "http-22"
+      port: 22
+      targetPort: 22
+    - protocol: TCP
+      name: "http-9090"
+      port: 9090
+      targetPort: 9090
+    - protocol: TCP
+      name: "http-9091"
+      port: 9091
+      targetPort: 9091
+    - protocol: TCP
+      name: "http-9093"
+      port: 9093
+      targetPort: 9093
+    - protocol: TCP
+      name: "http-9100"
+      port: 9100
+      targetPort: 9100
+    - protocol: TCP
+      name: "http-3000"
+      port: 3000
+      targetPort: 3000
+
+...
+
+
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sb-11-pushgateway-test
+spec:
+  schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: pgtest-01
+            image: reg.docker.askug.net:5000/pushgateway-test-sb-11:0.0.2
+            imagePullPolicy: IfNotPresent
+            args: ["http://sb-11-monitoring-service.monitoring.svc.cluster.local:9091"]
+            resources:
+              limits:
+                memory: 64Mi
+                cpu: 100m
+              requests:
+                memory: 32Mi
+                cpu: 50m
+          restartPolicy: OnFailure
+
+...
+
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sb-11-alertmanager-test
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: alertmgr-01
+        image: alpine:3.18
+        command: [ "sh", "-c", "echo \"Install Alertmanager\";
+          apk add alertmanager;
+          sleep 60;
+          amtool --alertmanager.url=http://sb-11-monitoring-service.monitoring.svc.cluster.local:9093/ alert add alertname=\"alertmanager-test\" state=\"red\" job=\"test-alert\" instance=\"localhost\" exporter=\"none\" cluster=\"test\" 
+          "
+        ]
+        resources:
+          limits:
+            memory: 128Mi
+            cpu: 250m
+          requests:
+            memory: 64Mi
+            cpu: 125m
+      restartPolicy: Never
+
+...

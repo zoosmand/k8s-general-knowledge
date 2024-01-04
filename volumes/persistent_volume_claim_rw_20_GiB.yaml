@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: caches
+spec:
+  # selector:
+  #   matchLabels:
+  #     app: sb-11
+  storageClassName: node0-local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+...

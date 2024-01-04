@@ -1,0 +1,136 @@
+
+
+#kubectl create secret tls sb-11-grafana-tls --cert=../../Docker/Letsencrypt/files/v1/letsencrypt/grafana/live/grafana.askug.net/fullchain.pem --key=../../Docker/Letsencrypt/files/v1/letsencrypt/grafana/live/grafana.askug.net/privkey.pem -n monitoring
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: sb-11-grafana-tls
+#   namespace: monitoring
+# type: kubernetes.io/tls
+# data:
+#   server.crt: |
+#     base64
+#   server.key: |
+#     base64
+
+# ...
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sb-11-monitoring-grafana-ingress
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - grafana.askug.net
+    secretName: sb-11-grafana-tls
+  rules:
+  - host: grafana.askug.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sb-11-monitoring-service
+            port:
+              number: 3000
+
+...
+
+
+# kubectl create secret tls sb-11-hooker-tls --cert=../../Docker/Letsencrypt/files/v1/letsencrypt/hooker/live/hooker.askug.net/fullchain.pem --key=../../Docker/Letsencrypt/files/v1/letsencrypt/hooker/live/hooker.askug.net/privkey.pem -n hooker
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: sb-11-hooker-tls
+#   namespace: monitoring
+# type: kubernetes.io/tls
+# data:
+#   server.crt: |
+#     base64
+#   server.key: |
+#     base64
+
+# ...
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sb-11-monitoring-hooker-ingress
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - hooker.askug.net
+    secretName: sb-11-hooker-tls
+  rules:
+  - host: hooker.askug.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            # name: sb-11-monitoring-hooker-service
+            name: sb-11-monitoring-service
+            port:
+              number: 18080
+
+...
+
+
+# kubectl create secret tls sb-11-monitoring-tls --cert=../../Docker/Letsencrypt/files/v1/letsencrypt/monitoring/live/monitoring.askug.net/fullchain.pem --key=../../Docker/Letsencrypt/files/v1/letsencrypt/monitoring/live/monitoring.askug.net/privkey.pem -n monitoring
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: sb-11-monitoring-tls
+#   namespace: monitoring
+# type: kubernetes.io/tls
+# data:
+#   server.crt: |
+#     base64
+#   server.key: |
+#     base64
+
+# ...
+
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: sb-11-monitoring-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+# spec:
+#   ingressClassName: nginx
+#   tls:
+#   - hosts:
+#     - monitoring.askug.net
+#     secretName: sb-11-monitoring-tls
+#   ingressClassName: nginx
+#   rules:
+#   - host: monitoring.askug.net
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: sb-11-monitoring-srv
+#             port:
+#               number: 9090
+
+# ...

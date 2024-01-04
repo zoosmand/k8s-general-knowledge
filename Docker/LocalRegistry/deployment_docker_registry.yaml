@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: docker-registry
+  name: registry
+  namespace: docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-registry
+  template:
+    metadata:
+      labels:
+        app: docker-registry
+    spec:
+      nodeSelector:
+        node-type: worker
+      containers:
+      - name: registry
+        image: docker.io/registry:2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: "/certs/tls.crt"
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: "/certs/tls.key"
+        volumeMounts:
+        - name: registry-crt
+          mountPath: "/certs"
+          readOnly: true
+        - name: registry-data
+          mountPath: "/var/lib/registry"
+          subPath: "registry"
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "1"
+      volumes:
+      - name: registry-crt
+        secret:
+          secretName: registry-crt
+      - name: registry-data
+        persistentVolumeClaim:
+          claimName: registry-data
+
+...

@@ -1,0 +1,29 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sb-11-alertmanager-test
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: alertmgr-01
+        image: alpine:3.18
+        command: [ "sh", "-c", "echo \"Install Alertmanager\";
+          apk add alertmanager;
+          sleep 60;
+          amtool --alertmanager.url=http://sb-11-monitoring-service.monitoring.svc.cluster.local:9093/ alert add alertname=\"alertmanager-telegram-test\" state=\"red\" job=\"test-alert\" instance=\"localhost\" exporter=\"none\" cluster=\"test\" 
+          "
+        ]
+        resources:
+          limits:
+            memory: 128Mi
+            cpu: 250m
+          requests:
+            memory: 64Mi
+            cpu: 125m
+      restartPolicy: Never
+
+...

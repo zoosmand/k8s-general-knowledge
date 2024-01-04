@@ -1,0 +1,67 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: monitoring
+  name: sb-11-monitoring-hooker
+  labels:
+    app: sb-11
+    test: liveness
+spec:
+  restartPolicy: OnFailure
+  nodeSelector:
+    node-type: worker
+  containers:
+
+    # ----------------------------------------------------
+    - name: hooker
+      image: reg.docker.askug.net:5000/hooker-sb-11:0.0.2
+
+      livenessProbe:
+        httpGet:
+          path: /healthy
+          port: 18080
+        initialDelaySeconds: 5
+        periodSeconds: 5
+
+      readinessProbe:
+        httpGet:
+          path: /healthy
+          port: 18080
+        initialDelaySeconds: 3
+        periodSeconds: 3
+
+      ports:
+      - containerPort: 18080
+        name: tcp18080
+
+      resources:
+        limits:
+          memory: 64Mi
+          cpu: 125m
+        requests:
+          memory: 32Mi
+          cpu: 64m
+
+...
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sb-11-monitoring-hooker-service
+  namespace: monitoring
+spec:
+  selector:
+    app: sb-11
+  type: LoadBalancer
+  loadBalancerIP: 10.203.10.26
+  ports:
+    - protocol: TCP
+      name: "http-18080"
+      port: 18080
+      targetPort: 18080
+
+...
+

@@ -1,0 +1,73 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: 0B2A3E6B-6122-4ECC-B04A-496FF937F560
+  name: sb-11-hooker
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 0B2A3E6B-6122-4ECC-B04A-496FF937F560
+  template:
+    metadata:
+      labels:
+        app: 0B2A3E6B-6122-4ECC-B04A-496FF937F560
+    spec:
+      nodeSelector:
+        node-type: worker
+      restartPolicy: Always
+      containers:
+
+      # ----------------------------------------------------
+      - name: hooker
+        image: reg.docker.askug.net:5000/hooker-sb-11:0.0.5
+
+        livenessProbe:
+          httpGet:
+            path: /healthy
+            port: 18080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 18080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+
+        ports:
+        - containerPort: 18080
+          name: tcp18080
+
+        resources:
+          limits:
+            memory: 64Mi
+            cpu: 125m
+          requests:
+            memory: 32Mi
+            cpu: 64m
+
+...
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sb-11-monitoring-hooker-service
+  namespace: monitoring
+spec:
+  selector:
+    app: 0B2A3E6B-6122-4ECC-B04A-496FF937F560
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      name: "http-18080"
+      port: 18080
+      targetPort: 18080
+
+...

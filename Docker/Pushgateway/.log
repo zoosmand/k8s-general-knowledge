@@ -1,0 +1,353 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.39kB done
+#1 DONE 0.0s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/ubuntu:22.04
+#3 DONE 0.6s
+
+#4 [1/8] FROM docker.io/library/ubuntu:22.04@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [2/8] RUN     set -eux;     apt-get update -y;     apt-get install -y --no-install-recommends         wget         ca-certificates         ;     apt-get clean;     apt-get -yf autoremove;     rm -rf /var/lib/apt/lists/*
+#6 0.130 + apt-get update -y
+#6 0.429 Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+#6 0.469 Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+#6 1.260 Get:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]
+#6 1.440 Get:4 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [44.0 kB]
+#6 1.448 Get:5 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]
+#6 1.632 Get:6 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+#6 1.672 Get:7 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [1305 kB]
+#6 2.100 Get:8 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+#6 2.101 Get:9 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+#6 2.114 Get:10 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+#6 3.021 Get:11 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1009 kB]
+#6 3.424 Get:12 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1131 kB]
+#6 4.457 Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1398 kB]
+#6 4.654 Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [49.8 kB]
+#6 4.658 Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [1330 kB]
+#6 4.986 Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1274 kB]
+#6 5.094 Get:17 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [32.6 kB]
+#6 5.094 Get:18 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [78.3 kB]
+#6 5.296 Fetched 28.0 MB in 5s (5424 kB/s)
+#6 5.296 Reading package lists...
+#6 5.909 + apt-get install -y --no-install-recommends wget ca-certificates
+#6 5.937 Reading package lists...
+#6 6.557 Building dependency tree...
+#6 6.668 Reading state information...
+#6 6.763 The following additional packages will be installed:
+#6 6.763   libpsl5 openssl
+#6 6.764 Recommended packages:
+#6 6.764   publicsuffix
+#6 6.782 The following NEW packages will be installed:
+#6 6.783   ca-certificates libpsl5 openssl wget
+#6 7.077 0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+#6 7.077 Need to get 1764 kB of archives.
+#6 7.077 After this operation, 3607 kB of additional disk space will be used.
+#6 7.077 Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssl amd64 3.0.2-0ubuntu1.10 [1183 kB]
+#6 8.218 Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ca-certificates all 20230311ubuntu0.22.04.1 [155 kB]
+#6 8.232 Get:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 libpsl5 amd64 0.21.0-1.2build2 [58.4 kB]
+#6 8.237 Get:4 http://archive.ubuntu.com/ubuntu jammy/main amd64 wget amd64 1.21.2-2ubuntu1 [367 kB]
+#6 8.347 debconf: delaying package configuration, since apt-utils is not installed
+#6 8.361 Fetched 1764 kB in 1s (1190 kB/s)
+#6 8.369 Selecting previously unselected package openssl.
+#6 8.369 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4395 files and directories currently installed.)
+#6 8.371 Preparing to unpack .../openssl_3.0.2-0ubuntu1.10_amd64.deb ...
+#6 8.372 Unpacking openssl (3.0.2-0ubuntu1.10) ...
+#6 8.389 Selecting previously unselected package ca-certificates.
+#6 8.389 Preparing to unpack .../ca-certificates_20230311ubuntu0.22.04.1_all.deb ...
+#6 8.390 Unpacking ca-certificates (20230311ubuntu0.22.04.1) ...
+#6 8.407 Selecting previously unselected package libpsl5:amd64.
+#6 8.407 Preparing to unpack .../libpsl5_0.21.0-1.2build2_amd64.deb ...
+#6 8.408 Unpacking libpsl5:amd64 (0.21.0-1.2build2) ...
+#6 8.415 Selecting previously unselected package wget.
+#6 8.416 Preparing to unpack .../wget_1.21.2-2ubuntu1_amd64.deb ...
+#6 8.416 Unpacking wget (1.21.2-2ubuntu1) ...
+#6 8.428 Setting up libpsl5:amd64 (0.21.0-1.2build2) ...
+#6 8.430 Setting up wget (1.21.2-2ubuntu1) ...
+#6 8.432 Setting up openssl (3.0.2-0ubuntu1.10) ...
+#6 8.435 Setting up ca-certificates (20230311ubuntu0.22.04.1) ...
+#6 8.490 debconf: unable to initialize frontend: Dialog
+#6 8.490 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#6 8.490 debconf: falling back to frontend: Readline
+#6 8.490 debconf: unable to initialize frontend: Readline
+#6 8.490 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#6 8.490 debconf: falling back to frontend: Teletype
+#6 8.685 Updating certificates in /etc/ssl/certs...
+#6 8.989 137 added, 0 removed; done.
+#6 9.001 Processing triggers for libc-bin (2.35-0ubuntu3.4) ...
+#6 9.006 Processing triggers for ca-certificates (20230311ubuntu0.22.04.1) ...
+#6 9.009 Updating certificates in /etc/ssl/certs...
+#6 9.219 0 added, 0 removed; done.
+#6 9.219 Running hooks in /etc/ca-certificates/update.d...
+#6 9.220 done.
+#6 9.230 + apt-get clean
+#6 9.232 + apt-get -yf autoremove
+#6 9.261 Reading package lists...
+#6 9.880 Building dependency tree...
+#6 9.997 Reading state information...
+#6 10.11 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+#6 10.11 + rm -rf /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-backports_InRelease /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-backports_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-backports_universe_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-updates_InRelease /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-updates_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-updates_multiverse_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-updates_restricted_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy-updates_universe_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy_InRelease /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy_multiverse_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy_restricted_binary-amd64_Packages.lz4 /var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_jammy_universe_binary-amd64_Packages.lz4 /var/lib/apt/lists/auxfiles /var/lib/apt/lists/lock /var/lib/apt/lists/partial /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_jammy-security_InRelease /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_jammy-security_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_jammy-security_multiverse_binary-amd64_Packages.lz4 /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_jammy-security_restricted_binary-amd64_Packages.lz4 /var/lib/apt/lists/security.ubuntu.com_ubuntu_dists_jammy-security_universe_binary-amd64_Packages.lz4
+#6 DONE 10.2s
+
+#7 [3/8] RUN     set -eux;     groupadd --system pushgateway;     useradd -s /sbin/nologin --system -g pushgateway pushgateway;     mkdir -p /etc/pushgateway;     mkdir -p /var/lib/pushgateway
+#7 0.242 + groupadd --system pushgateway
+#7 0.246 + useradd -s /sbin/nologin --system -g pushgateway pushgateway
+#7 0.252 + mkdir -p /etc/pushgateway
+#7 0.252 + mkdir -p /var/lib/pushgateway
+#7 DONE 0.3s
+
+#8 [4/8] WORKDIR /tmp
+#8 DONE 0.0s
+
+#9 [5/8] RUN wget https://github.com/prometheus/pushgateway/releases/download/v1.6.2/pushgateway-1.6.2.linux-amd64.tar.gz || true
+#9 0.291 --2023-10-21 07:58:32--  https://github.com/prometheus/pushgateway/releases/download/v1.6.2/pushgateway-1.6.2.linux-amd64.tar.gz
+#9 0.293 Resolving github.com (github.com)... 140.82.121.4
+#9 0.336 Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+#9 0.468 HTTP request sent, awaiting response... 302 Found
+#9 0.702 Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/16345015/1077da05-bdc2-4b0d-a425-f4fb30b691d6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T075832Z&X-Amz-Expires=300&X-Amz-Signature=9a0ce59c94c9452bd3579be9e1249a540bed7f71f10b251bf92d7b4c80302729&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=16345015&response-content-disposition=attachment%3B%20filename%3Dpushgateway-1.6.2.linux-amd64.tar.gz&response-content-type=application%2Foctet-stream [following]
+#9 0.702 --2023-10-21 07:58:32--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/16345015/1077da05-bdc2-4b0d-a425-f4fb30b691d6?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T075832Z&X-Amz-Expires=300&X-Amz-Signature=9a0ce59c94c9452bd3579be9e1249a540bed7f71f10b251bf92d7b4c80302729&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=16345015&response-content-disposition=attachment%3B%20filename%3Dpushgateway-1.6.2.linux-amd64.tar.gz&response-content-type=application%2Foctet-stream
+#9 0.702 Resolving objects.githubusercontent.com (objects.githubusercontent.com)... 185.199.108.133, 185.199.111.133, 185.199.110.133, ...
+#9 0.744 Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... connected.
+#9 0.883 HTTP request sent, awaiting response... 200 OK
+#9 1.136 Length: 10244122 (9.8M) [application/octet-stream]
+#9 1.136 Saving to: 'pushgateway-1.6.2.linux-amd64.tar.gz'
+#9 1.137 
+#9 1.137      0K .......... .......... .......... .......... ..........  0%  619K 16s
+#9 1.217     50K .......... .......... .......... .......... ..........  0%  891K 14s
+#9 1.273    100K .......... .......... .......... .......... ..........  1% 2.98M 10s
+#9 1.290    150K .......... .......... .......... .......... ..........  1% 4.07M 8s
+#9 1.302    200K .......... .......... .......... .......... ..........  2% 1.32M 8s
+#9 1.339    250K .......... .......... .......... .......... ..........  2% 4.92M 7s
+#9 1.348    300K .......... .......... .......... .......... ..........  3% 5.90M 6s
+#9 1.357    350K .......... .......... .......... .......... ..........  3% 4.90M 6s
+#9 1.367    400K .......... .......... .......... .......... ..........  4% 7.63M 5s
+#9 1.373    450K .......... .......... .......... .......... ..........  4% 8.48M 5s
+#9 1.379    500K .......... .......... .......... .......... ..........  5% 1.80M 5s
+#9 1.406    550K .......... .......... .......... .......... ..........  5% 9.41M 4s
+#9 1.411    600K .......... .......... .......... .......... ..........  6% 9.67M 4s
+#9 1.416    650K .......... .......... .......... .......... ..........  6% 11.0M 4s
+#9 1.421    700K .......... .......... .......... .......... ..........  7% 11.5M 4s
+#9 1.425    750K .......... .......... .......... .......... ..........  7% 8.85M 3s
+#9 1.430    800K .......... .......... .......... .......... ..........  8% 11.5M 3s
+#9 1.435    850K .......... .......... .......... .......... ..........  8% 11.6M 3s
+#9 1.439    900K .......... .......... .......... .......... ..........  9% 11.6M 3s
+#9 1.443    950K .......... .......... .......... .......... ..........  9% 11.5M 3s
+#9 1.447   1000K .......... .......... .......... .......... .......... 10% 11.9M 3s
+#9 1.451   1050K .......... .......... .......... .......... .......... 10% 2.45M 3s
+#9 1.471   1100K .......... .......... .......... .......... .......... 11% 11.6M 3s
+#9 1.476   1150K .......... .......... .......... .......... .......... 11% 8.68M 3s
+#9 1.481   1200K .......... .......... .......... .......... .......... 12% 11.6M 2s
+#9 1.485   1250K .......... .......... .......... .......... .......... 12% 11.6M 2s
+#9 1.490   1300K .......... .......... .......... .......... .......... 13% 11.9M 2s
+#9 1.494   1350K .......... .......... .......... .......... .......... 13%  323K 3s
+#9 1.649   1400K .......... .......... .......... .......... .......... 14%  275M 3s
+#9 1.649   1450K .......... .......... .......... .......... .......... 14%  320M 3s
+#9 1.649   1500K .......... .......... .......... .......... .......... 15%  343M 3s
+#9 1.649   1550K .......... .......... .......... .......... .......... 15%  334M 3s
+#9 1.649   1600K .......... .......... .......... .......... .......... 16%  400M 3s
+#9 1.649   1650K .......... .......... .......... .......... .......... 16%  307M 3s
+#9 1.650   1700K .......... .......... .......... .......... .......... 17%  343M 2s
+#9 1.650   1750K .......... .......... .......... .......... .......... 17%  361M 2s
+#9 1.650   1800K .......... .......... .......... .......... .......... 18%  317M 2s
+#9 1.650   1850K .......... .......... .......... .......... .......... 18%  311M 2s
+#9 1.650   1900K .......... .......... .......... .......... .......... 19%  345M 2s
+#9 1.650   1950K .......... .......... .......... .......... .......... 19%  323M 2s
+#9 1.651   2000K .......... .......... .......... .......... .......... 20%  347M 2s
+#9 1.651   2050K .......... .......... .......... .......... .......... 20%  360M 2s
+#9 1.651   2100K .......... .......... .......... .......... .......... 21%  325M 2s
+#9 1.651   2150K .......... .......... .......... .......... .......... 21%  312M 2s
+#9 1.651   2200K .......... .......... .......... .......... .......... 22%  312M 2s
+#9 1.651   2250K .......... .......... .......... .......... .......... 22%  375M 2s
+#9 1.651   2300K .......... .......... .......... .......... .......... 23%  290M 2s
+#9 1.652   2350K .......... .......... .......... .......... .......... 23%  269M 2s
+#9 1.652   2400K .......... .......... .......... .......... .......... 24%  342M 2s
+#9 1.652   2450K .......... .......... .......... .......... .......... 24%  352M 2s
+#9 1.652   2500K .......... .......... .......... .......... .......... 25%  330M 2s
+#9 1.652   2550K .......... .......... .......... .......... .......... 25%  308M 1s
+#9 1.652   2600K .......... .......... .......... .......... .......... 26%  371M 1s
+#9 1.652   2650K .......... .......... .......... .......... .......... 26%  296M 1s
+#9 1.653   2700K .......... .......... .......... .......... .......... 27%  357M 1s
+#9 1.653   2750K .......... .......... .......... .......... .......... 27%  233M 1s
+#9 1.653   2800K .......... .......... .......... .......... .......... 28%  255M 1s
+#9 1.653   2850K .......... .......... .......... .......... .......... 28%  300M 1s
+#9 1.653   2900K .......... .......... .......... .......... .......... 29%  287M 1s
+#9 1.654   2950K .......... .......... .......... .......... .......... 29%  266M 1s
+#9 1.654   3000K .......... .......... .......... .......... .......... 30%  321M 1s
+#9 1.654   3050K .......... .......... .......... .......... .......... 30% 26.8M 1s
+#9 1.656   3100K .......... .......... .......... .......... .......... 31% 11.6M 1s
+#9 1.660   3150K .......... .......... .......... .......... .......... 31% 8.84M 1s
+#9 1.665   3200K .......... .......... .......... .......... .......... 32% 11.6M 1s
+#9 1.670   3250K .......... .......... .......... .......... .......... 32% 11.5M 1s
+#9 1.674   3300K .......... .......... .......... .......... .......... 33% 11.6M 1s
+#9 1.678   3350K .......... .......... .......... .......... .......... 33% 11.5M 1s
+#9 1.682   3400K .......... .......... .......... .......... .......... 34% 11.9M 1s
+#9 1.686   3450K .......... .......... .......... .......... .......... 34% 11.6M 1s
+#9 1.691   3500K .......... .......... .......... .......... .......... 35% 11.6M 1s
+#9 1.695   3550K .......... .......... .......... .......... .......... 35% 8.83M 1s
+#9 1.700   3600K .......... .......... .......... .......... .......... 36% 11.6M 1s
+#9 1.705   3650K .......... .......... .......... .......... .......... 36% 10.8M 1s
+#9 1.709   3700K .......... .......... .......... .......... .......... 37% 11.7M 1s
+#9 1.713   3750K .......... .......... .......... .......... .......... 37% 11.5M 1s
+#9 1.718   3800K .......... .......... .......... .......... .......... 38% 11.5M 1s
+#9 1.722   3850K .......... .......... .......... .......... .......... 38% 11.6M 1s
+#9 1.726   3900K .......... .......... .......... .......... .......... 39% 11.9M 1s
+#9 1.730   3950K .......... .......... .......... .......... .......... 39% 8.65M 1s
+#9 1.736   4000K .......... .......... .......... .......... .......... 40% 11.6M 1s
+#9 1.740   4050K .......... .......... .......... .......... .......... 40%  628K 1s
+#9 1.820   4100K .......... .......... .......... .......... .......... 41% 20.3M 1s
+#9 1.822   4150K .......... .......... .......... .......... .......... 41% 25.1M 1s
+#9 1.824   4200K .......... .......... .......... .......... .......... 42% 22.5M 1s
+#9 1.826   4250K .......... .......... .......... .......... .......... 42% 22.4M 1s
+#9 1.828   4300K .......... .......... .......... .......... .......... 43% 24.0M 1s
+#9 1.830   4350K .......... .......... .......... .......... .......... 43% 19.4M 1s
+#9 1.833   4400K .......... .......... .......... .......... .......... 44% 34.2M 1s
+#9 1.834   4450K .......... .......... .......... .......... .......... 44%  283M 1s
+#9 1.834   4500K .......... .......... .......... .......... .......... 45%  332M 1s
+#9 1.835   4550K .......... .......... .......... .......... .......... 45%  309M 1s
+#9 1.835   4600K .......... .......... .......... .......... .......... 46% 3.98M 1s
+#9 1.847   4650K .......... .......... .......... .......... .......... 46%  329M 1s
+#9 1.847   4700K .......... .......... .......... .......... .......... 47%  293M 1s
+#9 1.847   4750K .......... .......... .......... .......... .......... 47%  267M 1s
+#9 1.848   4800K .......... .......... .......... .......... .......... 48%  311M 1s
+#9 1.848   4850K .......... .......... .......... .......... .......... 48%  347M 1s
+#9 1.848   4900K .......... .......... .......... .......... .......... 49%  320M 1s
+#9 1.848   4950K .......... .......... .......... .......... .......... 49%  281M 1s
+#9 1.848   5000K .......... .......... .......... .......... .......... 50%  357M 1s
+#9 1.848   5050K .......... .......... .......... .......... .......... 50%  350M 1s
+#9 1.848   5100K .......... .......... .......... .......... .......... 51%  356M 1s
+#9 1.849   5150K .......... .......... .......... .......... .......... 51%  309M 1s
+#9 1.849   5200K .......... .......... .......... .......... .......... 52%  366M 1s
+#9 1.849   5250K .......... .......... .......... .......... .......... 52% 13.2M 1s
+#9 1.853   5300K .......... .......... .......... .......... .......... 53% 8.60M 1s
+#9 1.858   5350K .......... .......... .......... .......... .......... 53% 8.55M 1s
+#9 1.864   5400K .......... .......... .......... .......... .......... 54% 11.5M 1s
+#9 1.868   5450K .......... .......... .......... .......... .......... 54% 11.7M 1s
+#9 1.872   5500K .......... .......... .......... .......... .......... 55% 11.6M 1s
+#9 1.877   5550K .......... .......... .......... .......... .......... 55% 8.83M 1s
+#9 1.882   5600K .......... .......... .......... .......... .......... 56% 11.6M 1s
+#9 1.886   5650K .......... .......... .......... .......... .......... 56% 11.6M 1s
+#9 1.891   5700K .......... .......... .......... .......... .......... 57% 11.2M 1s
+#9 1.895   5750K .......... .......... .......... .......... .......... 57% 11.9M 1s
+#9 1.899   5800K .......... .......... .......... .......... .......... 58% 11.5M 1s
+#9 1.903   5850K .......... .......... .......... .......... .......... 58% 11.6M 1s
+#9 1.907   5900K .......... .......... .......... .......... .......... 59% 9.16M 1s
+#9 1.913   5950K .......... .......... .......... .......... .......... 59% 6.04M 1s
+#9 1.921   6000K .......... .......... .......... .......... .......... 60% 7.18M 1s
+#9 1.928   6050K .......... .......... .......... .......... .......... 60% 11.3M 1s
+#9 1.932   6100K .......... .......... .......... .......... .......... 61% 11.9M 1s
+#9 1.936   6150K .......... .......... .......... .......... .......... 61% 11.4M 0s
+#9 1.940   6200K .......... .......... .......... .......... .......... 62% 11.3M 0s
+#9 1.945   6250K .......... .......... .......... .......... .......... 62% 11.4M 0s
+#9 1.949   6300K .......... .......... .......... .......... .......... 63% 11.8M 0s
+#9 1.953   6350K .......... .......... .......... .......... .......... 63% 8.65M 0s
+#9 1.959   6400K .......... .......... .......... .......... .......... 64% 11.6M 0s
+#9 1.963   6450K .......... .......... .......... .......... .......... 64% 11.6M 0s
+#9 1.967   6500K .......... .......... .......... .......... .......... 65% 11.5M 0s
+#9 1.971   6550K .......... .......... .......... .......... .......... 65% 11.5M 0s
+#9 1.976   6600K .......... .......... .......... .......... .......... 66% 9.61M 0s
+#9 1.981   6650K .......... .......... .......... .......... .......... 66% 7.75M 0s
+#9 1.987   6700K .......... .......... .......... .......... .......... 67% 8.14M 0s
+#9 1.993   6750K .......... .......... .......... .......... .......... 67% 7.66M 0s
+#9 1.999   6800K .......... .......... .......... .......... .......... 68% 11.0M 0s
+#9 2.004   6850K .......... .......... .......... .......... .......... 68% 11.6M 0s
+#9 2.008   6900K .......... .......... .......... .......... .......... 69% 11.6M 0s
+#9 2.012   6950K .......... .......... .......... .......... .......... 69% 11.6M 0s
+#9 2.017   7000K .......... .......... .......... .......... .......... 70% 11.2M 0s
+#9 2.021   7050K .......... .......... .......... .......... .......... 70% 11.6M 0s
+#9 2.025   7100K .......... .......... .......... .......... .......... 71% 9.22M 0s
+#9 2.030   7150K .......... .......... .......... .......... .......... 71% 8.83M 0s
+#9 2.036   7200K .......... .......... .......... .......... .......... 72% 11.6M 0s
+#9 2.040   7250K .......... .......... .......... .......... .......... 72% 11.6M 0s
+#9 2.044   7300K .......... .......... .......... .......... .......... 73% 11.9M 0s
+#9 2.049   7350K .......... .......... .......... .......... .......... 73% 8.38M 0s
+#9 2.054   7400K .......... .......... .......... .......... .......... 74% 7.36M 0s
+#9 2.061   7450K .......... .......... .......... .......... .......... 74% 11.4M 0s
+#9 2.065   7500K .......... .......... .......... .......... .......... 75% 10.8M 0s
+#9 2.070   7550K .......... .......... .......... .......... .......... 75% 8.28M 0s
+#9 2.076   7600K .......... .......... .......... .......... .......... 76% 11.9M 0s
+#9 2.080   7650K .......... .......... .......... .......... .......... 76% 11.5M 0s
+#9 2.084   7700K .......... .......... .......... .......... .......... 77% 11.6M 0s
+#9 2.088   7750K .......... .......... .......... .......... .......... 77% 11.5M 0s
+#9 2.092   7800K .......... .......... .......... .......... .......... 78% 9.79M 0s
+#9 2.097   7850K .......... .......... .......... .......... .......... 78% 11.2M 0s
+#9 2.102   7900K .......... .......... .......... .......... .......... 79% 11.5M 0s
+#9 2.106   7950K .......... .......... .......... .......... .......... 79% 8.84M 0s
+#9 2.112   8000K .......... .......... .......... .......... .......... 80% 11.4M 0s
+#9 2.116   8050K .......... .......... .......... .......... .......... 80% 10.5M 0s
+#9 2.120   8100K .......... .......... .......... .......... .......... 81% 6.64M 0s
+#9 2.128   8150K .......... .......... .......... .......... .......... 81% 11.4M 0s
+#9 2.132   8200K .......... .......... .......... .......... .......... 82% 10.3M 0s
+#9 2.137   8250K .......... .......... .......... .......... .......... 82% 11.0M 0s
+#9 2.141   8300K .......... .......... .......... .......... .......... 83% 11.6M 0s
+#9 2.146   8350K .......... .......... .......... .......... .......... 83% 8.84M 0s
+#9 2.151   8400K .......... .......... .......... .......... .......... 84% 11.6M 0s
+#9 2.155   8450K .......... .......... .......... .......... .......... 84% 11.6M 0s
+#9 2.159   8500K .......... .......... .......... .......... .......... 85% 13.2M 0s
+#9 2.163   8550K .......... .......... .......... .......... .......... 85% 9.41M 0s
+#9 2.168   8600K .......... .......... .......... .......... .......... 86% 11.1M 0s
+#9 2.173   8650K .......... .......... .......... .......... .......... 86% 8.87M 0s
+#9 2.178   8700K .......... .......... .......... .......... .......... 87% 11.8M 0s
+#9 2.182   8750K .......... .......... .......... .......... .......... 87% 8.52M 0s
+#9 2.188   8800K .......... .......... .......... .......... .......... 88% 11.6M 0s
+#9 2.192   8850K .......... .......... .......... .......... .......... 88% 7.24M 0s
+#9 2.199   8900K .......... .......... .......... .......... .......... 89% 11.4M 0s
+#9 2.203   8950K .......... .......... .......... .......... .......... 89% 11.2M 0s
+#9 2.208   9000K .......... .......... .......... .......... .......... 90% 11.3M 0s
+#9 2.212   9050K .......... .......... .......... .......... .......... 90% 11.4M 0s
+#9 2.216   9100K .......... .......... .......... .......... .......... 91% 11.5M 0s
+#9 2.221   9150K .......... .......... .......... .......... .......... 91% 8.75M 0s
+#9 2.226   9200K .......... .......... .......... .......... .......... 92% 11.3M 0s
+#9 2.230   9250K .......... .......... .......... .......... .......... 92% 11.0M 0s
+#9 2.235   9300K .......... .......... .......... .......... .......... 93% 10.6M 0s
+#9 2.239   9350K .......... .......... .......... .......... .......... 93% 9.98M 0s
+#9 2.244   9400K .......... .......... .......... .......... .......... 94% 10.4M 0s
+#9 2.249   9450K .......... .......... .......... .......... .......... 94% 11.4M 0s
+#9 2.253   9500K .......... .......... .......... .......... .......... 95% 10.6M 0s
+#9 2.258   9550K .......... .......... .......... .......... .......... 95% 7.07M 0s
+#9 2.265   9600K .......... .......... .......... .......... .......... 96% 10.5M 0s
+#9 2.270   9650K .......... .......... .......... .......... .......... 96% 11.0M 0s
+#9 2.274   9700K .......... .......... .......... .......... .......... 97% 11.5M 0s
+#9 2.278   9750K .......... .......... .......... .......... .......... 97% 11.3M 0s
+#9 2.283   9800K .......... .......... .......... .......... .......... 98% 11.2M 0s
+#9 2.287   9850K .......... .......... .......... .......... .......... 98% 11.6M 0s
+#9 2.291   9900K .......... .......... .......... .......... .......... 99% 11.9M 0s
+#9 2.295   9950K .......... .......... .......... .......... .......... 99% 10.7M 0s
+#9 2.300  10000K ....                                                  100% 97.7M=1.2s
+#9 2.300 
+#9 2.300 2023-10-21 07:58:34 (8.40 MB/s) - 'pushgateway-1.6.2.linux-amd64.tar.gz' saved [10244122/10244122]
+#9 2.300 
+#9 DONE 2.4s
+
+#10 [6/8] COPY pushgateway-1.6.2.linux-amd64.tar.gz* .
+#10 DONE 0.0s
+
+#11 [7/8] RUN     set -eux;     tar xzvf pushgateway-1.6.2.linux-amd64.tar.gz;     cd pushgateway-1.6.2.linux-amd64;     mv pushgateway /usr/local/bin;     chown pushgateway:pushgateway /usr/local/bin/pushgateway
+#11 0.232 + tar xzvf pushgateway-1.6.2.linux-amd64.tar.gz
+#11 0.233 pushgateway-1.6.2.linux-amd64/
+#11 0.234 pushgateway-1.6.2.linux-amd64/pushgateway
+#11 0.346 pushgateway-1.6.2.linux-amd64/NOTICE
+#11 0.346 pushgateway-1.6.2.linux-amd64/LICENSE
+#11 0.346 + cd pushgateway-1.6.2.linux-amd64
+#11 0.346 + mv pushgateway /usr/local/bin
+#11 0.347 + chown pushgateway:pushgateway /usr/local/bin/pushgateway
+#11 DONE 0.4s
+
+#12 [8/8] WORKDIR /var/lib/pushgateway
+#12 DONE 0.0s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.9s done
+#13 writing image sha256:5b953ebde8fa30b782e8fc8095c5c0734a4382aa62ed4f73385ea0507cb1f54a done
+#13 naming to reg.docker.askug.net:5000/pushgateway-sb-11:0.0.5 done
+#13 DONE 0.9s

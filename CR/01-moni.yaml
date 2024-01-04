@@ -1,0 +1,7 @@
+apiVersion: askug.net/v1beta1
+kind: Monitoring
+metadata:
+  name: 01-moni
+  namespace: default
+spec:
+  port: "8500"

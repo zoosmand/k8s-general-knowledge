@@ -1,0 +1,83 @@
+NAME: istio-base
+LAST DEPLOYED: Tue Oct 17 14:45:00 2023
+NAMESPACE: istio-system
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+base:
+  enableCRDTemplates: false
+  enableIstioConfigCRDs: true
+  validationURL: ""
+defaultRevision: default
+global:
+  configValidation: true
+  externalIstiod: false
+  imagePullSecrets: []
+  istioNamespace: istio-system
+  istiod:
+    enableAnalysis: false
+  platform: ""
+  remotePilotAddress: ""
+
+HOOKS:
+MANIFEST:
+---
+# Source: base/templates/reader-serviceaccount.yaml
+# This service account aggregates reader permissions for the revisions in a given cluster
+# Should be used for remote secret creation.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: istio-reader-service-account
+  namespace: istio-system
+  labels:
+    app: istio-reader
+    release: istio-base
+---
+# Source: base/templates/default.yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: istiod-default-validator
+  labels:
+    app: istiod
+    release: istio-base
+    istio: istiod
+    istio.io/rev: default
+webhooks:
+  - name: validation.istio.io
+    clientConfig:
+      service:
+        name: istiod
+        namespace: istio-system
+        path: "/validate"
+    rules:
+      - operations:
+          - CREATE
+          - UPDATE
+        apiGroups:
+          - security.istio.io
+          - networking.istio.io
+          - telemetry.istio.io
+          - extensions.istio.io
+        apiVersions:
+          - "*"
+        resources:
+          - "*"
+    # Fail open until the validation webhook is ready. The webhook controller
+    # will update this to `Fail` and patch in the `caBundle` when the webhook
+    # endpoint is ready.
+    failurePolicy: Ignore
+    sideEffects: None
+    admissionReviewVersions: ["v1beta1", "v1"]
+
+NOTES:
+Istio base successfully installed!
+
+To learn more about the release, try:
+  $ helm status istio-base
+  $ helm get all istio-base

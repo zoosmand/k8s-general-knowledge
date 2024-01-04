@@ -1,0 +1,27 @@
+---
+version: "3.9"
+
+services:
+  monitoring:
+    image: nginx:1.25
+    # command: > 
+    #   bash -c "echo \"123\""
+    ports:
+      - "18180:80"
+      - "18443:443"
+    volumes:
+      - ./files/v1/nginx/hooker/conf.d:/etc/nginx/conf.d
+      - ./files/v1/nginx/hooker/log:/var/log/nginx
+      - ./files/v1/letsencrypt/hooker:/etc/letsencrypt
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    driver: bridge
+
+volumes:
+  proxy:
+    driver: local   
+
+...

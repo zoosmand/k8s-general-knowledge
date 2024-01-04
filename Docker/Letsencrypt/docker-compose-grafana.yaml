@@ -1,0 +1,27 @@
+---
+version: "3.9"
+
+services:
+  grafana:
+    image: nginx:1.25
+    # command: > 
+    #   bash -c "echo \"123\""
+    ports:
+      - "18180:80"
+      - "18443:443"
+    volumes:
+      - ./files/v1/nginx/grafana/conf.d:/etc/nginx/conf.d
+      - ./files/v1/nginx/grafana/log:/var/log/nginx
+      - ./files/v1/letsencrypt/grafana:/etc/letsencrypt
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    driver: bridge
+
+volumes:
+  proxy:
+    driver: local   
+
+...

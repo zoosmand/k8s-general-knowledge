@@ -1,0 +1,54 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 517B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/golang:alpine
+#3 DONE 0.0s
+
+#4 [builder 1/6] FROM docker.io/library/golang:alpine
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 29B done
+#5 DONE 0.0s
+
+#6 [builder 2/6] RUN mkdir -p /tmp/build
+#6 DONE 0.2s
+
+#7 [builder 3/6] WORKDIR /tmp/build
+#7 DONE 0.0s
+
+#8 [builder 4/6] COPY ./main.go .
+#8 DONE 0.0s
+
+#9 [builder 5/6] RUN     apk add binutils
+#9 0.308 fetch https://dl-cdn.alpinelinux.org/alpine/v3.18/main/x86_64/APKINDEX.tar.gz
+#9 0.834 fetch https://dl-cdn.alpinelinux.org/alpine/v3.18/community/x86_64/APKINDEX.tar.gz
+#9 1.266 (1/4) Installing libgcc (12.2.1_git20220924-r10)
+#9 1.340 (2/4) Installing libstdc++ (12.2.1_git20220924-r10)
+#9 1.538 (3/4) Installing zstd-libs (1.5.5-r4)
+#9 1.678 (4/4) Installing binutils (2.40-r7)
+#9 2.159 Executing busybox-1.36.1-r2.trigger
+#9 2.161 OK: 19 MiB in 20 packages
+#9 DONE 2.3s
+
+#10 [builder 6/6] RUN     go mod init main;     go get;     CGO_ENABLED=0 GOOS=linux GOARCH=amd64     go build -a -tags netgo -ldflags '-w -extldflags "-static"' -o /go/bin/scratch;     strip /go/bin/scratch
+#10 0.251 go: creating new go.mod: module main
+#10 0.251 go: to add module requirements and sums:
+#10 0.251 	go mod tidy
+#10 DONE 5.5s
+
+#11 [stage-1 1/2] COPY --from=0 /go/bin/scratch .
+#11 DONE 0.0s
+
+#12 exporting to image
+#12 exporting layers 0.0s done
+#12 writing image sha256:dd5fbef58fbd40db35be5d6890a9989c7a8532cf15a13755c9bbe3ab585bd0d9 done
+#12 naming to reg.docker.askug.net:5000/hooker-sb-11:0.0.5 done
+#12 DONE 0.0s

@@ -1,0 +1,148 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sb-11-monitoring-config
+  namespace: monitoring
+immutable: true
+data:
+  prometheus.yml: |+
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 25s
+
+    alerting:
+     alertmanagers:
+       - static_configs:
+           - targets:
+             - localhost:9093
+
+    rule_files:
+      - "email_rules.yml"
+      - "telegram_rules.yml"
+
+    scrape_configs:
+      - job_name: "Prometheus"
+        static_configs:
+          - targets: ["localhost:9090"]
+      
+      - job_name: "Pushgateway"
+        honor_labels: true
+        static_configs:
+        - targets: ["sb-11-monitoring-pushgateway-service.monitoring.svc.cluster.local:9091"]
+
+      - job_name: "Alertnamager"
+        honor_labels: true
+        static_configs:
+        - targets: ["sb-11-monitoring-alertmanager-service.monitoring.svc.cluster.local:9093"]
+
+      - job_name: "Grafana"
+        honor_labels: true
+        static_configs:
+        - targets: ["sb-11-monitoring-grafana-service.monitoring.svc.cluster.local:3000"]
+
+      - job_name: "Nodes"
+        static_configs:
+          - targets: ["mp8.mira.asart.local:9100", "mp1.mira.asart.local:9100"]
+
+      - job_name: "Mysql"
+        static_configs:
+          - targets: ["10.216.80.13:9104"]
+
+      - job_name: "K0s"
+        kubernetes_sd_configs:
+        - role: endpoints
+        scheme: https
+        tls_config:
+          insecure_skip_verify: true
+        authorization:
+          credentials_file: /etc/prometheus/restapi.token
+        static_configs:
+          - targets: ["metrics-server.kube-system.svc.cluster.local"]
+
+  email_rules.yml: |+
+    groups:
+    - name: MonitoringServices
+      rules:
+      - alert: MonitoringServiceDown
+        expr: up{job=~"Alertnamager|Grafana|Prometheus|Pushgateway"} == 0
+        for: 30s
+        labels:
+          moni_state: red
+        annotations:
+          summary: "Instance {{ $labels.instance }} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
+
+  telegram_rules.yml: |+
+    groups:
+    - name: Nodes
+      rules:
+      - alert: NodeDown
+        expr: up{job="Nodes"} == 0
+        for: 30s
+        labels:
+          state: red
+        annotations:
+          summary: "Instance {{ $labels.instance }} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
+
+  alertmanager.yml: |+
+    global:
+      resolve_timeout: 5m
+      http_config:
+        follow_redirects: true
+        enable_http2: true
+      smtp_hello: monitoring.askug.net
+      smtp_require_tls: true
+      pagerduty_url: https://events.pagerduty.com/v2/enqueue
+      telegram_api_url: https://api.telegram.org
+
+    route:
+      group_by: ['alertname']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+      receiver: 'web.hook'
+
+      routes:
+      - receiver: 'soc.telegram'
+        matchers:
+        - state = red
+
+      - receiver: 'soc.email'
+        matchers:
+        - moni_state = red
+
+    receivers:
+      - name: 'web.hook'
+        webhook_configs:
+          - url: 'http://sb-11-monitoring-hooker-service.monitoring.svc.cluster.local:18080'
+
+      - name: 'soc.telegram'
+        telegram_configs:
+        - bot_token_file: /etc/alertmanager/telegram.token
+          chat_id: 731503652
+          parse_mode: ''
+
+      - name: 'soc.email'
+        email_configs:
+        - to: zoosmand@yandex.ru
+          from: admin@askug.net
+          smarthost: smtp.yandex.ru:465
+          require_tls: false
+          auth_username: admin@askug.net
+          auth_password_file: /etc/alertmanager/email.password
+          headers:
+            From: Askug Alertmanager <admin@askug.net>
+
+    inhibit_rules:
+      - source_match:
+          severity: 'critical'
+        target_match:
+          severity: 'warning'
+        equal: ['alertname', 'dev', 'instance']
+
+  grafana.ini: |+
+    oh!
+...
+

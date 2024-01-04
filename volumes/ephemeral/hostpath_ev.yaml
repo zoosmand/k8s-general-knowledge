@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hpev
+spec:
+  containers:
+  - image: busybox:1.36
+    name: hpev-01
+    volumeMounts:
+    - mountPath: /scratch
+      name: scratch-volume
+    command: [ "tail", "-f", "/dev/null" ]
+    resources:
+      limits:
+        memory: 32Mi
+        cpu: 100m
+  volumes:
+  - name: scratch-volume
+    hostPath:
+      # directory location on host
+      path: /home/zoosman/dev/k0s/volumes/mnt/ephemerals/hostpath
+      # this field is optional
+      type: Directory
+
+...
+

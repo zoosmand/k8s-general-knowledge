@@ -1,0 +1,20 @@
+apiVersion: v2
+name: ips-monitoring
+description: SkillBox DevOps, chapter 11, Monitoring
+
+type: application
+
+keywords:
+  - prometheus
+  - grafana
+  - pushgateway
+  - alertmanager
+  - exporter
+
+maintainers:
+  - name: Dmitry Slobochikov
+    email: zoosmand@gmail.com
+
+version: "0.0.1"
+
+appVersion: "1.16.0"

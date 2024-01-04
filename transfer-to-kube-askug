@@ -1,0 +1,13 @@
+1. Docker registry
+    - <s>fix Helm (registry<->repository)</s>
+    - fix Docker files
+    - rebuild images
+     
+
+
+
+2. Move volumes to LVS/storage2
+3. Certificates
+4. Ingress
+5. xinetd
+6. 

@@ -1,0 +1,96 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: ae990206-74e1-11ee-8193-9ff7152449b8
+  name: sb-11-grafana
+  namespace: monitoring
+spec:
+  serviceName: sb-11-grafana-daemon
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ae990206-74e1-11ee-8193-9ff7152449b8
+  template:
+    metadata:
+      labels:
+        app: ae990206-74e1-11ee-8193-9ff7152449b8
+    spec:
+      nodeSelector:
+        node-type: worker
+      restartPolicy: Always
+      containers:
+
+      # ----------------------------------------------------
+      - name: grafana
+        image: reg.docker.askug.net:5000/grafana-sb-11:0.0.5
+
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+          initialDelaySeconds: 3
+          periodSeconds: 3
+
+        volumeMounts:
+          - mountPath: "/opt/grafana/data"
+            name: monitoring-data-volume
+            subPath: "caches/grafana/data"
+          - mountPath: "/opt/grafana/conf"
+            name: monitoring-data-volume
+            subPath: "caches/grafana/conf"
+
+        ports:
+        - containerPort: 3000
+          name: tcp3000
+
+        env:
+        - name: GRAFANA_VERSION
+          value: 10.1.1
+        - name: GF_PATHS_CONFIG
+          value: /opt/grafana/conf/grafana.ini
+        - name: GF_SERVER_ROOT_URL
+          value: https://grafana.askug.net
+
+        resources:
+          limits:
+            memory: 4Gi
+            cpu: "4"
+          requests:
+            memory: 2Gi
+            cpu: "2"
+
+      volumes:
+      - name: monitoring-data-volume
+        persistentVolumeClaim:
+          claimName: sb-11-monitoring-data
+
+...
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sb-11-monitoring-grafana-service
+  namespace: monitoring
+spec:
+  selector:
+    app: ae990206-74e1-11ee-8193-9ff7152449b8
+  type: LoadBalancer
+  loadBalancerIP: 10.203.10.25
+  ports:
+    - protocol: TCP
+      name: "http-3000"
+      port: 3000
+      targetPort: 3000
+
+...

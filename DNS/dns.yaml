@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-dns
+  namespace: kube-system
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+data:
+  stubDomains: |
+    {
+      “home.asart.local”: [“192.168.200.2”],
+      “mira.asart.local”: [“192.168.203.10”]
+    }
+  
+  upstreamNameservers: |
+    [“192.168.203.10”, "8.8.8.8", "8.8.4.4"]
+
+...

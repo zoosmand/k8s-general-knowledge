@@ -1,0 +1,649 @@
+2023/10/15 17:04:26 [notice] 1#1: using the "epoll" event method
+2023/10/15 17:04:26 [notice] 1#1: nginx/1.25.2
+2023/10/15 17:04:26 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2023/10/15 17:04:26 [notice] 1#1: OS: Linux 5.4.0-164-generic
+2023/10/15 17:04:26 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/10/15 17:04:26 [notice] 1#1: start worker processes
+2023/10/15 17:04:26 [notice] 1#1: start worker process 28
+2023/10/15 17:04:26 [notice] 1#1: start worker process 29
+2023/10/15 17:04:26 [notice] 1#1: start worker process 30
+2023/10/15 17:04:26 [notice] 1#1: start worker process 31
+2023/10/15 17:04:26 [notice] 1#1: start worker process 32
+2023/10/15 17:04:26 [notice] 1#1: start worker process 33
+2023/10/15 17:04:26 [notice] 1#1: start worker process 34
+2023/10/15 17:04:26 [notice] 1#1: start worker process 35
+2023/10/15 17:04:26 [notice] 1#1: start worker process 36
+2023/10/15 17:04:26 [notice] 1#1: start worker process 37
+2023/10/15 17:04:26 [notice] 1#1: start worker process 38
+2023/10/15 17:04:26 [notice] 1#1: start worker process 39
+2023/10/15 17:04:26 [notice] 1#1: start worker process 40
+2023/10/15 17:04:26 [notice] 1#1: start worker process 41
+2023/10/15 17:04:26 [notice] 1#1: start worker process 42
+2023/10/15 17:04:26 [notice] 1#1: start worker process 43
+2023/10/15 17:04:26 [notice] 1#1: start worker process 44
+2023/10/15 17:04:26 [notice] 1#1: start worker process 45
+2023/10/15 17:04:26 [notice] 1#1: start worker process 46
+2023/10/15 17:04:26 [notice] 1#1: start worker process 47
+2023/10/15 17:06:51 [notice] 823#823: signal process started
+2023/10/15 17:06:51 [notice] 1#1: signal 1 (SIGHUP) received from 823, reconfiguring
+2023/10/15 17:06:51 [notice] 1#1: reconfiguring
+2023/10/15 17:06:51 [notice] 1#1: using the "epoll" event method
+2023/10/15 17:06:51 [notice] 1#1: start worker processes
+2023/10/15 17:06:51 [notice] 1#1: start worker process 824
+2023/10/15 17:06:51 [notice] 1#1: start worker process 825
+2023/10/15 17:06:51 [notice] 1#1: start worker process 826
+2023/10/15 17:06:51 [notice] 1#1: start worker process 827
+2023/10/15 17:06:51 [notice] 1#1: start worker process 828
+2023/10/15 17:06:51 [notice] 1#1: start worker process 829
+2023/10/15 17:06:51 [notice] 1#1: start worker process 830
+2023/10/15 17:06:51 [notice] 1#1: start worker process 831
+2023/10/15 17:06:51 [notice] 1#1: start worker process 832
+2023/10/15 17:06:51 [notice] 1#1: start worker process 833
+2023/10/15 17:06:51 [notice] 1#1: start worker process 834
+2023/10/15 17:06:51 [notice] 1#1: start worker process 835
+2023/10/15 17:06:51 [notice] 1#1: start worker process 836
+2023/10/15 17:06:51 [notice] 1#1: start worker process 837
+2023/10/15 17:06:51 [notice] 1#1: start worker process 838
+2023/10/15 17:06:51 [notice] 1#1: start worker process 839
+2023/10/15 17:06:51 [notice] 1#1: start worker process 840
+2023/10/15 17:06:51 [notice] 1#1: start worker process 841
+2023/10/15 17:06:51 [notice] 1#1: start worker process 842
+2023/10/15 17:06:51 [notice] 1#1: start worker process 843
+2023/10/15 17:06:51 [notice] 28#28: gracefully shutting down
+2023/10/15 17:06:51 [notice] 29#29: gracefully shutting down
+2023/10/15 17:06:51 [notice] 30#30: gracefully shutting down
+2023/10/15 17:06:51 [notice] 31#31: gracefully shutting down
+2023/10/15 17:06:51 [notice] 32#32: gracefully shutting down
+2023/10/15 17:06:51 [notice] 33#33: gracefully shutting down
+2023/10/15 17:06:51 [notice] 34#34: gracefully shutting down
+2023/10/15 17:06:51 [notice] 35#35: gracefully shutting down
+2023/10/15 17:06:51 [notice] 36#36: gracefully shutting down
+2023/10/15 17:06:51 [notice] 37#37: gracefully shutting down
+2023/10/15 17:06:51 [notice] 28#28: exiting
+2023/10/15 17:06:51 [notice] 38#38: gracefully shutting down
+2023/10/15 17:06:51 [notice] 39#39: gracefully shutting down
+2023/10/15 17:06:51 [notice] 37#37: exiting
+2023/10/15 17:06:51 [notice] 29#29: exiting
+2023/10/15 17:06:51 [notice] 41#41: gracefully shutting down
+2023/10/15 17:06:51 [notice] 40#40: gracefully shutting down
+2023/10/15 17:06:51 [notice] 30#30: exiting
+2023/10/15 17:06:51 [notice] 42#42: gracefully shutting down
+2023/10/15 17:06:51 [notice] 43#43: gracefully shutting down
+2023/10/15 17:06:51 [notice] 31#31: exiting
+2023/10/15 17:06:51 [notice] 44#44: gracefully shutting down
+2023/10/15 17:06:51 [notice] 45#45: gracefully shutting down
+2023/10/15 17:06:51 [notice] 46#46: gracefully shutting down
+2023/10/15 17:06:51 [notice] 47#47: gracefully shutting down
+2023/10/15 17:06:51 [notice] 32#32: exiting
+2023/10/15 17:06:51 [notice] 33#33: exiting
+2023/10/15 17:06:51 [notice] 34#34: exiting
+2023/10/15 17:06:51 [notice] 35#35: exiting
+2023/10/15 17:06:51 [notice] 36#36: exiting
+2023/10/15 17:06:51 [notice] 38#38: exiting
+2023/10/15 17:06:51 [notice] 39#39: exiting
+2023/10/15 17:06:51 [notice] 41#41: exiting
+2023/10/15 17:06:51 [notice] 28#28: exit
+2023/10/15 17:06:51 [notice] 40#40: exiting
+2023/10/15 17:06:51 [notice] 37#37: exit
+2023/10/15 17:06:51 [notice] 29#29: exit
+2023/10/15 17:06:51 [notice] 42#42: exiting
+2023/10/15 17:06:51 [notice] 43#43: exiting
+2023/10/15 17:06:51 [notice] 30#30: exit
+2023/10/15 17:06:51 [notice] 44#44: exiting
+2023/10/15 17:06:51 [notice] 45#45: exiting
+2023/10/15 17:06:51 [notice] 46#46: exiting
+2023/10/15 17:06:51 [notice] 47#47: exiting
+2023/10/15 17:06:51 [notice] 31#31: exit
+2023/10/15 17:06:51 [notice] 32#32: exit
+2023/10/15 17:06:51 [notice] 34#34: exit
+2023/10/15 17:06:51 [notice] 38#38: exit
+2023/10/15 17:06:51 [notice] 35#35: exit
+2023/10/15 17:06:51 [notice] 39#39: exit
+2023/10/15 17:06:51 [notice] 41#41: exit
+2023/10/15 17:06:51 [notice] 33#33: exit
+2023/10/15 17:06:51 [notice] 40#40: exit
+2023/10/15 17:06:51 [notice] 36#36: exit
+2023/10/15 17:06:51 [notice] 42#42: exit
+2023/10/15 17:06:51 [notice] 43#43: exit
+2023/10/15 17:06:51 [notice] 44#44: exit
+2023/10/15 17:06:51 [notice] 46#46: exit
+2023/10/15 17:06:51 [notice] 45#45: exit
+2023/10/15 17:06:51 [notice] 47#47: exit
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 41
+2023/10/15 17:06:51 [notice] 1#1: worker process 33 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: worker process 41 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 33
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2023/10/15 17:06:51 [notice] 1#1: worker process 29 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 46
+2023/10/15 17:06:51 [notice] 1#1: worker process 46 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 40
+2023/10/15 17:06:51 [notice] 1#1: worker process 40 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 37
+2023/10/15 17:06:51 [notice] 1#1: worker process 37 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: worker process 43 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 39
+2023/10/15 17:06:51 [notice] 1#1: worker process 35 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: worker process 39 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 45
+2023/10/15 17:06:51 [notice] 1#1: worker process 45 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2023/10/15 17:06:51 [notice] 1#1: worker process 30 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 36
+2023/10/15 17:06:51 [notice] 1#1: worker process 36 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 42
+2023/10/15 17:06:51 [notice] 1#1: worker process 42 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 38
+2023/10/15 17:06:51 [notice] 1#1: worker process 38 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 32
+2023/10/15 17:06:51 [notice] 1#1: worker process 32 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 31
+2023/10/15 17:06:51 [notice] 1#1: worker process 31 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 47
+2023/10/15 17:06:51 [notice] 1#1: worker process 47 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 34
+2023/10/15 17:06:51 [notice] 1#1: worker process 34 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 44
+2023/10/15 17:06:51 [notice] 1#1: worker process 44 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:51 [notice] 1#1: signal 17 (SIGCHLD) received from 28
+2023/10/15 17:06:51 [notice] 1#1: worker process 28 exited with code 0
+2023/10/15 17:06:51 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:56 [notice] 844#844: signal process started
+2023/10/15 17:06:56 [notice] 1#1: signal 1 (SIGHUP) received from 844, reconfiguring
+2023/10/15 17:06:56 [notice] 1#1: reconfiguring
+2023/10/15 17:06:56 [notice] 1#1: using the "epoll" event method
+2023/10/15 17:06:56 [notice] 1#1: start worker processes
+2023/10/15 17:06:56 [notice] 1#1: start worker process 845
+2023/10/15 17:06:56 [notice] 1#1: start worker process 846
+2023/10/15 17:06:56 [notice] 1#1: start worker process 847
+2023/10/15 17:06:56 [notice] 1#1: start worker process 848
+2023/10/15 17:06:56 [notice] 1#1: start worker process 849
+2023/10/15 17:06:56 [notice] 1#1: start worker process 850
+2023/10/15 17:06:56 [notice] 1#1: start worker process 851
+2023/10/15 17:06:56 [notice] 1#1: start worker process 852
+2023/10/15 17:06:56 [notice] 1#1: start worker process 853
+2023/10/15 17:06:56 [notice] 1#1: start worker process 854
+2023/10/15 17:06:56 [notice] 1#1: start worker process 855
+2023/10/15 17:06:56 [notice] 1#1: start worker process 856
+2023/10/15 17:06:56 [notice] 1#1: start worker process 857
+2023/10/15 17:06:56 [notice] 1#1: start worker process 858
+2023/10/15 17:06:56 [notice] 1#1: start worker process 859
+2023/10/15 17:06:56 [notice] 1#1: start worker process 860
+2023/10/15 17:06:56 [notice] 1#1: start worker process 861
+2023/10/15 17:06:56 [notice] 1#1: start worker process 862
+2023/10/15 17:06:56 [notice] 1#1: start worker process 863
+2023/10/15 17:06:56 [notice] 1#1: start worker process 864
+2023/10/15 17:06:56 [notice] 824#824: gracefully shutting down
+2023/10/15 17:06:56 [notice] 825#825: gracefully shutting down
+2023/10/15 17:06:56 [notice] 826#826: gracefully shutting down
+2023/10/15 17:06:56 [notice] 827#827: gracefully shutting down
+2023/10/15 17:06:56 [notice] 828#828: gracefully shutting down
+2023/10/15 17:06:56 [notice] 829#829: gracefully shutting down
+2023/10/15 17:06:56 [notice] 827#827: exiting
+2023/10/15 17:06:56 [notice] 830#830: gracefully shutting down
+2023/10/15 17:06:56 [notice] 831#831: gracefully shutting down
+2023/10/15 17:06:56 [notice] 824#824: exiting
+2023/10/15 17:06:56 [notice] 832#832: gracefully shutting down
+2023/10/15 17:06:56 [notice] 825#825: exiting
+2023/10/15 17:06:56 [notice] 833#833: gracefully shutting down
+2023/10/15 17:06:56 [notice] 826#826: exiting
+2023/10/15 17:06:56 [notice] 834#834: gracefully shutting down
+2023/10/15 17:06:56 [notice] 835#835: gracefully shutting down
+2023/10/15 17:06:56 [notice] 836#836: gracefully shutting down
+2023/10/15 17:06:56 [notice] 824#824: exit
+2023/10/15 17:06:56 [notice] 828#828: exiting
+2023/10/15 17:06:56 [notice] 837#837: gracefully shutting down
+2023/10/15 17:06:56 [notice] 829#829: exiting
+2023/10/15 17:06:56 [notice] 838#838: gracefully shutting down
+2023/10/15 17:06:56 [notice] 839#839: gracefully shutting down
+2023/10/15 17:06:56 [notice] 830#830: exiting
+2023/10/15 17:06:56 [notice] 840#840: gracefully shutting down
+2023/10/15 17:06:56 [notice] 831#831: exiting
+2023/10/15 17:06:56 [notice] 841#841: gracefully shutting down
+2023/10/15 17:06:56 [notice] 842#842: gracefully shutting down
+2023/10/15 17:06:56 [notice] 832#832: exiting
+2023/10/15 17:06:56 [notice] 827#827: exit
+2023/10/15 17:06:56 [notice] 833#833: exiting
+2023/10/15 17:06:56 [notice] 834#834: exiting
+2023/10/15 17:06:56 [notice] 825#825: exit
+2023/10/15 17:06:56 [notice] 835#835: exiting
+2023/10/15 17:06:56 [notice] 826#826: exit
+2023/10/15 17:06:56 [notice] 836#836: exiting
+2023/10/15 17:06:56 [notice] 837#837: exiting
+2023/10/15 17:06:56 [notice] 828#828: exit
+2023/10/15 17:06:56 [notice] 838#838: exiting
+2023/10/15 17:06:56 [notice] 839#839: exiting
+2023/10/15 17:06:56 [notice] 829#829: exit
+2023/10/15 17:06:56 [notice] 840#840: exiting
+2023/10/15 17:06:56 [notice] 841#841: exiting
+2023/10/15 17:06:56 [notice] 842#842: exiting
+2023/10/15 17:06:56 [notice] 830#830: exit
+2023/10/15 17:06:56 [notice] 831#831: exit
+2023/10/15 17:06:56 [notice] 833#833: exit
+2023/10/15 17:06:56 [notice] 832#832: exit
+2023/10/15 17:06:56 [notice] 835#835: exit
+2023/10/15 17:06:56 [notice] 834#834: exit
+2023/10/15 17:06:56 [notice] 836#836: exit
+2023/10/15 17:06:56 [notice] 838#838: exit
+2023/10/15 17:06:56 [notice] 837#837: exit
+2023/10/15 17:06:56 [notice] 839#839: exit
+2023/10/15 17:06:56 [notice] 840#840: exit
+2023/10/15 17:06:56 [notice] 842#842: exit
+2023/10/15 17:06:56 [notice] 841#841: exit
+2023/10/15 17:06:56 [notice] 843#843: gracefully shutting down
+2023/10/15 17:06:56 [notice] 843#843: exiting
+2023/10/15 17:06:56 [notice] 843#843: exit
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 839
+2023/10/15 17:06:57 [notice] 1#1: worker process 839 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 836
+2023/10/15 17:06:57 [notice] 1#1: worker process 824 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 832 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 834 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 835 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 836 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 837 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 838 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 841 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 843 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 825 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 834
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 833
+2023/10/15 17:06:57 [notice] 1#1: worker process 833 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 830
+2023/10/15 17:06:57 [notice] 1#1: worker process 829 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 830 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 840
+2023/10/15 17:06:57 [notice] 1#1: worker process 840 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 826 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 826
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 828
+2023/10/15 17:06:57 [notice] 1#1: worker process 828 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 827
+2023/10/15 17:06:57 [notice] 1#1: worker process 827 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: worker process 842 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:57 [notice] 1#1: signal 17 (SIGCHLD) received from 831
+2023/10/15 17:06:57 [notice] 1#1: worker process 831 exited with code 0
+2023/10/15 17:06:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 865#865: signal process started
+2023/10/15 17:06:59 [notice] 1#1: signal 1 (SIGHUP) received from 865, reconfiguring
+2023/10/15 17:06:59 [notice] 1#1: reconfiguring
+2023/10/15 17:06:59 [notice] 1#1: using the "epoll" event method
+2023/10/15 17:06:59 [notice] 1#1: start worker processes
+2023/10/15 17:06:59 [notice] 1#1: start worker process 866
+2023/10/15 17:06:59 [notice] 1#1: start worker process 867
+2023/10/15 17:06:59 [notice] 1#1: start worker process 868
+2023/10/15 17:06:59 [notice] 1#1: start worker process 869
+2023/10/15 17:06:59 [notice] 1#1: start worker process 870
+2023/10/15 17:06:59 [notice] 1#1: start worker process 871
+2023/10/15 17:06:59 [notice] 1#1: start worker process 872
+2023/10/15 17:06:59 [notice] 1#1: start worker process 873
+2023/10/15 17:06:59 [notice] 1#1: start worker process 874
+2023/10/15 17:06:59 [notice] 1#1: start worker process 875
+2023/10/15 17:06:59 [notice] 1#1: start worker process 876
+2023/10/15 17:06:59 [notice] 1#1: start worker process 877
+2023/10/15 17:06:59 [notice] 1#1: start worker process 878
+2023/10/15 17:06:59 [notice] 1#1: start worker process 879
+2023/10/15 17:06:59 [notice] 1#1: start worker process 880
+2023/10/15 17:06:59 [notice] 1#1: start worker process 881
+2023/10/15 17:06:59 [notice] 1#1: start worker process 882
+2023/10/15 17:06:59 [notice] 1#1: start worker process 883
+2023/10/15 17:06:59 [notice] 1#1: start worker process 884
+2023/10/15 17:06:59 [notice] 1#1: start worker process 885
+2023/10/15 17:06:59 [notice] 845#845: gracefully shutting down
+2023/10/15 17:06:59 [notice] 846#846: gracefully shutting down
+2023/10/15 17:06:59 [notice] 847#847: gracefully shutting down
+2023/10/15 17:06:59 [notice] 848#848: gracefully shutting down
+2023/10/15 17:06:59 [notice] 849#849: gracefully shutting down
+2023/10/15 17:06:59 [notice] 850#850: gracefully shutting down
+2023/10/15 17:06:59 [notice] 851#851: gracefully shutting down
+2023/10/15 17:06:59 [notice] 852#852: gracefully shutting down
+2023/10/15 17:06:59 [notice] 853#853: gracefully shutting down
+2023/10/15 17:06:59 [notice] 854#854: gracefully shutting down
+2023/10/15 17:06:59 [notice] 845#845: exiting
+2023/10/15 17:06:59 [notice] 855#855: gracefully shutting down
+2023/10/15 17:06:59 [notice] 857#857: gracefully shutting down
+2023/10/15 17:06:59 [notice] 856#856: gracefully shutting down
+2023/10/15 17:06:59 [notice] 846#846: exiting
+2023/10/15 17:06:59 [notice] 858#858: gracefully shutting down
+2023/10/15 17:06:59 [notice] 859#859: gracefully shutting down
+2023/10/15 17:06:59 [notice] 860#860: gracefully shutting down
+2023/10/15 17:06:59 [notice] 847#847: exiting
+2023/10/15 17:06:59 [notice] 861#861: gracefully shutting down
+2023/10/15 17:06:59 [notice] 862#862: gracefully shutting down
+2023/10/15 17:06:59 [notice] 848#848: exiting
+2023/10/15 17:06:59 [notice] 864#864: gracefully shutting down
+2023/10/15 17:06:59 [notice] 849#849: exiting
+2023/10/15 17:06:59 [notice] 850#850: exiting
+2023/10/15 17:06:59 [notice] 851#851: exiting
+2023/10/15 17:06:59 [notice] 852#852: exiting
+2023/10/15 17:06:59 [notice] 853#853: exiting
+2023/10/15 17:06:59 [notice] 854#854: exiting
+2023/10/15 17:06:59 [notice] 855#855: exiting
+2023/10/15 17:06:59 [notice] 857#857: exiting
+2023/10/15 17:06:59 [notice] 856#856: exiting
+2023/10/15 17:06:59 [notice] 858#858: exiting
+2023/10/15 17:06:59 [notice] 859#859: exiting
+2023/10/15 17:06:59 [notice] 860#860: exiting
+2023/10/15 17:06:59 [notice] 849#849: exit
+2023/10/15 17:06:59 [notice] 845#845: exit
+2023/10/15 17:06:59 [notice] 846#846: exit
+2023/10/15 17:06:59 [notice] 861#861: exiting
+2023/10/15 17:06:59 [notice] 862#862: exiting
+2023/10/15 17:06:59 [notice] 864#864: exiting
+2023/10/15 17:06:59 [notice] 847#847: exit
+2023/10/15 17:06:59 [notice] 848#848: exit
+2023/10/15 17:06:59 [notice] 851#851: exit
+2023/10/15 17:06:59 [notice] 850#850: exit
+2023/10/15 17:06:59 [notice] 852#852: exit
+2023/10/15 17:06:59 [notice] 853#853: exit
+2023/10/15 17:06:59 [notice] 854#854: exit
+2023/10/15 17:06:59 [notice] 857#857: exit
+2023/10/15 17:06:59 [notice] 856#856: exit
+2023/10/15 17:06:59 [notice] 858#858: exit
+2023/10/15 17:06:59 [notice] 859#859: exit
+2023/10/15 17:06:59 [notice] 855#855: exit
+2023/10/15 17:06:59 [notice] 860#860: exit
+2023/10/15 17:06:59 [notice] 861#861: exit
+2023/10/15 17:06:59 [notice] 862#862: exit
+2023/10/15 17:06:59 [notice] 864#864: exit
+2023/10/15 17:06:59 [notice] 863#863: gracefully shutting down
+2023/10/15 17:06:59 [notice] 863#863: exiting
+2023/10/15 17:06:59 [notice] 863#863: exit
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 848
+2023/10/15 17:06:59 [notice] 1#1: worker process 848 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 851 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 851
+2023/10/15 17:06:59 [notice] 1#1: worker process 845 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 850 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 856 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 857 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 847
+2023/10/15 17:06:59 [notice] 1#1: worker process 847 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 846
+2023/10/15 17:06:59 [notice] 1#1: worker process 846 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 859
+2023/10/15 17:06:59 [notice] 1#1: worker process 855 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 859 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 862
+2023/10/15 17:06:59 [notice] 1#1: worker process 862 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 858
+2023/10/15 17:06:59 [notice] 1#1: worker process 858 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 863
+2023/10/15 17:06:59 [notice] 1#1: worker process 853 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 863 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 853
+2023/10/15 17:06:59 [notice] 1#1: worker process 849 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 854 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: worker process 864 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 852
+2023/10/15 17:06:59 [notice] 1#1: worker process 852 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 861
+2023/10/15 17:06:59 [notice] 1#1: worker process 861 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:06:59 [notice] 1#1: signal 17 (SIGCHLD) received from 860
+2023/10/15 17:06:59 [notice] 1#1: worker process 860 exited with code 0
+2023/10/15 17:06:59 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 886#886: signal process started
+2023/10/15 17:07:00 [notice] 1#1: signal 1 (SIGHUP) received from 886, reconfiguring
+2023/10/15 17:07:00 [notice] 1#1: reconfiguring
+2023/10/15 17:07:00 [notice] 1#1: using the "epoll" event method
+2023/10/15 17:07:00 [notice] 1#1: start worker processes
+2023/10/15 17:07:00 [notice] 1#1: start worker process 887
+2023/10/15 17:07:00 [notice] 1#1: start worker process 888
+2023/10/15 17:07:00 [notice] 1#1: start worker process 889
+2023/10/15 17:07:00 [notice] 1#1: start worker process 890
+2023/10/15 17:07:00 [notice] 1#1: start worker process 891
+2023/10/15 17:07:00 [notice] 1#1: start worker process 892
+2023/10/15 17:07:00 [notice] 1#1: start worker process 893
+2023/10/15 17:07:00 [notice] 1#1: start worker process 894
+2023/10/15 17:07:00 [notice] 1#1: start worker process 895
+2023/10/15 17:07:00 [notice] 1#1: start worker process 896
+2023/10/15 17:07:00 [notice] 1#1: start worker process 897
+2023/10/15 17:07:00 [notice] 1#1: start worker process 898
+2023/10/15 17:07:00 [notice] 1#1: start worker process 899
+2023/10/15 17:07:00 [notice] 1#1: start worker process 900
+2023/10/15 17:07:00 [notice] 1#1: start worker process 901
+2023/10/15 17:07:00 [notice] 1#1: start worker process 902
+2023/10/15 17:07:00 [notice] 1#1: start worker process 903
+2023/10/15 17:07:00 [notice] 1#1: start worker process 904
+2023/10/15 17:07:00 [notice] 1#1: start worker process 905
+2023/10/15 17:07:00 [notice] 1#1: start worker process 906
+2023/10/15 17:07:00 [notice] 866#866: gracefully shutting down
+2023/10/15 17:07:00 [notice] 870#870: gracefully shutting down
+2023/10/15 17:07:00 [notice] 867#867: gracefully shutting down
+2023/10/15 17:07:00 [notice] 868#868: gracefully shutting down
+2023/10/15 17:07:00 [notice] 869#869: gracefully shutting down
+2023/10/15 17:07:00 [notice] 871#871: gracefully shutting down
+2023/10/15 17:07:00 [notice] 872#872: gracefully shutting down
+2023/10/15 17:07:00 [notice] 873#873: gracefully shutting down
+2023/10/15 17:07:00 [notice] 866#866: exiting
+2023/10/15 17:07:00 [notice] 874#874: gracefully shutting down
+2023/10/15 17:07:00 [notice] 875#875: gracefully shutting down
+2023/10/15 17:07:00 [notice] 870#870: exiting
+2023/10/15 17:07:00 [notice] 867#867: exiting
+2023/10/15 17:07:00 [notice] 876#876: gracefully shutting down
+2023/10/15 17:07:00 [notice] 877#877: gracefully shutting down
+2023/10/15 17:07:00 [notice] 878#878: gracefully shutting down
+2023/10/15 17:07:00 [notice] 868#868: exiting
+2023/10/15 17:07:00 [notice] 879#879: gracefully shutting down
+2023/10/15 17:07:00 [notice] 869#869: exiting
+2023/10/15 17:07:00 [notice] 880#880: gracefully shutting down
+2023/10/15 17:07:00 [notice] 871#871: exiting
+2023/10/15 17:07:00 [notice] 881#881: gracefully shutting down
+2023/10/15 17:07:00 [notice] 872#872: exiting
+2023/10/15 17:07:00 [notice] 873#873: exiting
+2023/10/15 17:07:00 [notice] 883#883: gracefully shutting down
+2023/10/15 17:07:00 [notice] 882#882: gracefully shutting down
+2023/10/15 17:07:00 [notice] 874#874: exiting
+2023/10/15 17:07:00 [notice] 875#875: exiting
+2023/10/15 17:07:00 [notice] 876#876: exiting
+2023/10/15 17:07:00 [notice] 877#877: exiting
+2023/10/15 17:07:00 [notice] 878#878: exiting
+2023/10/15 17:07:00 [notice] 879#879: exiting
+2023/10/15 17:07:00 [notice] 880#880: exiting
+2023/10/15 17:07:00 [notice] 881#881: exiting
+2023/10/15 17:07:00 [notice] 883#883: exiting
+2023/10/15 17:07:00 [notice] 882#882: exiting
+2023/10/15 17:07:00 [notice] 866#866: exit
+2023/10/15 17:07:00 [notice] 873#873: exit
+2023/10/15 17:07:00 [notice] 870#870: exit
+2023/10/15 17:07:00 [notice] 867#867: exit
+2023/10/15 17:07:00 [notice] 868#868: exit
+2023/10/15 17:07:00 [notice] 869#869: exit
+2023/10/15 17:07:00 [notice] 871#871: exit
+2023/10/15 17:07:00 [notice] 872#872: exit
+2023/10/15 17:07:00 [notice] 875#875: exit
+2023/10/15 17:07:00 [notice] 876#876: exit
+2023/10/15 17:07:00 [notice] 878#878: exit
+2023/10/15 17:07:00 [notice] 874#874: exit
+2023/10/15 17:07:00 [notice] 877#877: exit
+2023/10/15 17:07:00 [notice] 879#879: exit
+2023/10/15 17:07:00 [notice] 882#882: exit
+2023/10/15 17:07:00 [notice] 880#880: exit
+2023/10/15 17:07:00 [notice] 883#883: exit
+2023/10/15 17:07:00 [notice] 881#881: exit
+2023/10/15 17:07:00 [notice] 885#885: gracefully shutting down
+2023/10/15 17:07:00 [notice] 885#885: exiting
+2023/10/15 17:07:00 [notice] 885#885: exit
+2023/10/15 17:07:00 [notice] 884#884: gracefully shutting down
+2023/10/15 17:07:00 [notice] 884#884: exiting
+2023/10/15 17:07:00 [notice] 884#884: exit
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 867
+2023/10/15 17:07:00 [notice] 1#1: worker process 866 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 867 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 878 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 878
+2023/10/15 17:07:00 [notice] 1#1: worker process 869 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 875 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 877 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 880 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 882 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 874
+2023/10/15 17:07:00 [notice] 1#1: worker process 874 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 876
+2023/10/15 17:07:00 [notice] 1#1: worker process 873 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 876 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 883
+2023/10/15 17:07:00 [notice] 1#1: worker process 883 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 881
+2023/10/15 17:07:00 [notice] 1#1: worker process 881 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 868
+2023/10/15 17:07:00 [notice] 1#1: worker process 868 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:00 [notice] 1#1: signal 17 (SIGCHLD) received from 870
+2023/10/15 17:07:00 [notice] 1#1: worker process 870 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 872 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: worker process 879 exited with code 0
+2023/10/15 17:07:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:01 [notice] 1#1: signal 17 (SIGCHLD) received from 871
+2023/10/15 17:07:01 [notice] 1#1: worker process 871 exited with code 0
+2023/10/15 17:07:01 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:01 [notice] 1#1: signal 17 (SIGCHLD) received from 884
+2023/10/15 17:07:01 [notice] 1#1: worker process 884 exited with code 0
+2023/10/15 17:07:01 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:07:01 [notice] 1#1: signal 17 (SIGCHLD) received from 885
+2023/10/15 17:07:01 [notice] 1#1: worker process 885 exited with code 0
+2023/10/15 17:07:01 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/10/15 17:08:28 [notice] 887#887: gracefully shutting down
+2023/10/15 17:08:28 [notice] 888#888: gracefully shutting down
+2023/10/15 17:08:28 [notice] 889#889: gracefully shutting down
+2023/10/15 17:08:28 [notice] 890#890: gracefully shutting down
+2023/10/15 17:08:28 [notice] 891#891: gracefully shutting down
+2023/10/15 17:08:28 [notice] 892#892: gracefully shutting down
+2023/10/15 17:08:28 [notice] 893#893: gracefully shutting down
+2023/10/15 17:08:28 [notice] 888#888: exiting
+2023/10/15 17:08:28 [notice] 894#894: gracefully shutting down
+2023/10/15 17:08:28 [notice] 895#895: gracefully shutting down
+2023/10/15 17:08:28 [notice] 903#903: gracefully shutting down
+2023/10/15 17:08:28 [notice] 896#896: gracefully shutting down
+2023/10/15 17:08:28 [notice] 897#897: gracefully shutting down
+2023/10/15 17:08:28 [notice] 898#898: gracefully shutting down
+2023/10/15 17:08:28 [notice] 900#900: gracefully shutting down
+2023/10/15 17:08:28 [notice] 899#899: gracefully shutting down
+2023/10/15 17:08:28 [notice] 901#901: gracefully shutting down
+2023/10/15 17:08:28 [notice] 892#892: exiting
+2023/10/15 17:08:28 [notice] 902#902: gracefully shutting down
+2023/10/15 17:08:28 [notice] 894#894: exiting
+2023/10/15 17:08:28 [notice] 895#895: exiting
+2023/10/15 17:08:28 [notice] 904#904: gracefully shutting down
+2023/10/15 17:08:28 [notice] 903#903: exiting
+2023/10/15 17:08:28 [notice] 893#893: exiting
+2023/10/15 17:08:28 [notice] 891#891: exiting
+2023/10/15 17:08:28 [notice] 896#896: exiting
+2023/10/15 17:08:28 [notice] 897#897: exiting
+2023/10/15 17:08:28 [notice] 898#898: exiting
+2023/10/15 17:08:28 [notice] 900#900: exiting
+2023/10/15 17:08:28 [notice] 899#899: exiting
+2023/10/15 17:08:28 [notice] 901#901: exiting
+2023/10/15 17:08:28 [notice] 889#889: exiting
+2023/10/15 17:08:28 [notice] 902#902: exiting
+2023/10/15 17:08:28 [notice] 890#890: exiting
+2023/10/15 17:08:28 [notice] 904#904: exiting
+2023/10/15 17:08:28 [notice] 906#906: gracefully shutting down
+2023/10/15 17:08:28 [notice] 888#888: exit
+2023/10/15 17:08:28 [notice] 892#892: exit
+2023/10/15 17:08:28 [notice] 906#906: exiting
+2023/10/15 17:08:28 [notice] 903#903: exit
+2023/10/15 17:08:28 [notice] 895#895: exit
+2023/10/15 17:08:28 [notice] 905#905: gracefully shutting down
+2023/10/15 17:08:28 [notice] 891#891: exit
+2023/10/15 17:08:28 [notice] 894#894: exit
+2023/10/15 17:08:28 [notice] 893#893: exit
+2023/10/15 17:08:28 [notice] 890#890: exit
+2023/10/15 17:08:28 [notice] 896#896: exit
+2023/10/15 17:08:28 [notice] 897#897: exit
+2023/10/15 17:08:28 [notice] 902#902: exit
+2023/10/15 17:08:28 [notice] 889#889: exit
+2023/10/15 17:08:28 [notice] 898#898: exit
+2023/10/15 17:08:28 [notice] 904#904: exit
+2023/10/15 17:08:28 [notice] 900#900: exit
+2023/10/15 17:08:28 [notice] 905#905: exiting
+2023/10/15 17:08:28 [notice] 901#901: exit
+2023/10/15 17:08:28 [notice] 906#906: exit
+2023/10/15 17:08:28 [notice] 905#905: exit
+2023/10/15 17:08:28 [notice] 899#899: exit
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 904
+2023/10/15 17:08:28 [notice] 1#1: worker process 904 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 898
+2023/10/15 17:08:28 [notice] 1#1: worker process 889 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: worker process 890 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: worker process 894 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: worker process 898 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: worker process 906 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 890
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 901
+2023/10/15 17:08:28 [notice] 1#1: worker process 901 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 902
+2023/10/15 17:08:28 [notice] 1#1: worker process 902 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: worker process 895 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 895
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 903
+2023/10/15 17:08:28 [notice] 1#1: worker process 903 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 893
+2023/10/15 17:08:28 [notice] 1#1: worker process 893 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: worker process 899 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 897
+2023/10/15 17:08:28 [notice] 1#1: worker process 897 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 891
+2023/10/15 17:08:28 [notice] 1#1: worker process 891 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 892
+2023/10/15 17:08:28 [notice] 1#1: worker process 892 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 900
+2023/10/15 17:08:28 [notice] 1#1: worker process 888 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: worker process 900 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 896
+2023/10/15 17:08:28 [notice] 1#1: worker process 896 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received
+2023/10/15 17:08:28 [notice] 1#1: signal 17 (SIGCHLD) received from 905
+2023/10/15 17:08:28 [notice] 1#1: worker process 905 exited with code 0
+2023/10/15 17:08:28 [notice] 1#1: signal 29 (SIGIO) received

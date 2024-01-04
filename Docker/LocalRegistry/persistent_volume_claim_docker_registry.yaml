@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: registry-data
+  namespace: docker
+spec:
+  # selector:
+  #   matchLabels:
+  #     app: docker-registry
+  storageClassName: node0-local-storage-docker-registry
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+...

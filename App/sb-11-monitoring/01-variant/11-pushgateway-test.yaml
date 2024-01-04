@@ -1,0 +1,28 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sb-11-pushgateway-test
+spec:
+  schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: pgtest-01
+            image: reg.docker.askug.net:5000/pushgateway-test-sb-11:0.0.5
+            imagePullPolicy: IfNotPresent
+            args: [ "http://sb-11-monitoring-pushgateway-service.monitoring.svc.cluster.local:9091" ]
+            resources:
+              limits:
+                memory: 64Mi
+                cpu: 100m
+              requests:
+                memory: 32Mi
+                cpu: 50m
+          restartPolicy: OnFailure
+
+...

@@ -1,0 +1,7 @@
+172.20.0.1 - - [15/Oct/2023:17:07:07 +0000] "GET /.env HTTP/1.1" 404 153 "-" "Mozilla/5.0 (Linux; U; Android 4.4.2; en-US; HM NOTE 1W Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/11.0.5.850 U3/0.8.0 Mobile Safari/534.30" "-"
+172.20.0.1 - - [15/Oct/2023:17:07:08 +0000] "POST / HTTP/1.1" 404 153 "-" "Mozilla/5.0 (Linux; U; Android 4.4.2; en-US; HM NOTE 1W Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/11.0.5.850 U3/0.8.0 Mobile Safari/534.30" "-"
+172.20.0.1 - - [15/Oct/2023:17:07:11 +0000] "GET / HTTP/1.1" 301 169 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/118.0" "-"
+172.20.0.1 - - [15/Oct/2023:17:08:10 +0000] "GET / HTTP/1.1" 301 169 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/117.0.5938.88 Safari/537.36" "-"
+172.20.0.1 - - [15/Oct/2023:17:08:19 +0000] "GET / HTTP/1.1" 301 169 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/117.0.5938.88 Safari/537.36" "-"
+172.20.0.1 - - [15/Oct/2023:17:08:24 +0000] "GET / HTTP/1.1" 301 169 "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" "-"
+172.20.0.1 - - [15/Oct/2023:17:08:27 +0000] "GET / HTTP/1.1" 301 169 "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" "-"

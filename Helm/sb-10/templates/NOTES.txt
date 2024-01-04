@@ -1,0 +1,3 @@
+{{ include "monitoring.name" . }}
+{{ include "monitoring.fullname" . }}
+kubectl --namespace {{ include "monitoring.namespace" . }}
