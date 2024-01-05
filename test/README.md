@@ -10,6 +10,7 @@ Host 10.203.10.30
   User root
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
+  PreferredAuthentications keyboard-interactive,password
 EOF
 ~~~
 
