@@ -1,6 +1,7 @@
 # Kubernetes K0s
 
 ## Installation
+
 ### Stand-alone / sngle controller/worker
 ~~~ bash
 sudo k0s install controller --single
@@ -29,11 +30,13 @@ k0s token create --role=worker --expiry=100h > token-file
 sudo k0s install worker --token-file /path/to/token/file
 sudo k0s start
 ~~~
+
 - on the existing controller
 #### Add a controller to the cluster
 ~~~ bash
 sudo k0s token create --role=controller --expiry=1h > token-file
 ~~~
+
 - on the new controller
 ~~~ bash
 sudo k0s install controller --token-file /path/to/token/file
@@ -47,8 +50,8 @@ sudo k0s status
 
 ---
 
-## Users
-### A user in group
+## Users and Groups
+### Add user in a group
 ~~~ bash
 # a cluster admin
 sudo k0s kubeconfig admin > ~/.kube/admin.config
@@ -70,36 +73,36 @@ kubectl get all --kubeconfig ~/.kube/zoosman.config
 export KUBECONFIG=~/.kube/admin.config:~/.kube/zoosman.config
 ~~~
 
-#### Merge several configs into one one
+### Merge several configs into one one
 ~~~ bash
 kubectl config view --flatten > ~/.kube/config
 export KUBECONFIG=~/.kube/config
 ~~~
 
 ---
----
----
-## restart a pod
+
+## Some tips
+
+### restart a pod
 ~~~ bash
 kubectl get pod <pod_name> -o json | kubectl replace --force -f - 
 # or
 kubectl get pod <pod_name> -o yaml | kubectl replace --force -f - 
 ~~~
 
-## Add alabel for a node
+### Add label for a node
 ~~~ bash
 kubectl label node/mp8 node-type=worker
 # to check labels
 kubectl get nodes --show-labels
 ~~~
 
-## Change namespace in current context
+### Change namespace in current context
 ~~~ bash
 kubectl config set-context --current --namespace=default
 ~~~
 
 
-## Some tips
 
 * export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=sb-10,app.kubernetes.io/instance=sb-10" -o jsonpath="{.items[0].metadata.name}")
 
