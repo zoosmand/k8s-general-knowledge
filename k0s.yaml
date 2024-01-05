@@ -5,11 +5,13 @@ metadata:
   name: k0s
 spec:
   api:
-    address: 192.168.203.80
+    address: 192.168.203.191
+    externalAddress: 5.189.89.192
     k0sApiPort: 9443
     port: 6443
     sans:
-    - 192.168.203.80
+    - 192.168.203.191
+    - 5.189.89.192
     - 10.0.0.1
     - 10.10.0.1
     - 192.168.122.1
@@ -28,7 +30,7 @@ spec:
       charts:
       - name: metallb
         chartname: metallb/metallb
-        namespace: metallb
+        namespace: metallb-system
       concurrencyLevel: 5
     storage:
       create_default_storage_class: false
@@ -45,7 +47,7 @@ spec:
     agentPort: 8132
   network:
     calico: null
-    clusterDomain: cluster.local
+    clusterDomain: kube.askug.net
     dualStack: {}
     kubeProxy:
       iptables:
