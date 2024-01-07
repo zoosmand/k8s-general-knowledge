@@ -3,6 +3,7 @@
 *.pem
 *.tgz
 *.tar.gz
+*.tar
 mnt
 istioctl
 private_key.json

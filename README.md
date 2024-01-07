@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Stand-alone / sngle controller/worker
+### Stand-alone / single controller and worker
 ~~~ bash
 sudo k0s install controller --single
 sudo k0s start
