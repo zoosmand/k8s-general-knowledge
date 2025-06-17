@@ -7,7 +7,7 @@ metadata:
     app: mon-test
 spec:
   containers:
-  - image: alpine:3.18
+  - image: alpine:3.22
     name: test-pod-01
     # command: [ "tail", "-f", "/dev/null" ]
     command: [ "sh", "-c", "echo \"Install OpenSSH\";
