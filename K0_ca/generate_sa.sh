@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $DIR
+
+# --- Generate Etcd JWT Key Pair --- #
+echo "Etcd SA key pair"
+KEY_PREFIX=sa
+KEY_STORAGE=./Etcd
+
+mkdir -p $KEY_STORAGE
+openssl genrsa -out $KEY_STORAGE/$KEY_PREFIX.key 2048
+openssl rsa -in $KEY_STORAGE/$KEY_PREFIX.key -pubout -out $KEY_STORAGE/$KEY_PREFIX.pub
+
+exit $?
