@@ -5,22 +5,13 @@ metadata:
   name: k0s
 spec:
   api:
-    address: 192.168.203.191
-    externalAddress: 5.189.89.192
+    address: 192.168.203.192
+    externalAddress: 192.168.203.10
     k0sApiPort: 9443
     port: 6443
     sans:
-    - 192.168.203.191
-    - 5.189.89.192
-    - 10.0.0.1
-    - 10.10.0.1
-    - 192.168.122.1
-    - 10.244.0.1
-    - fe80::146d:c0ff:fea8:cb50
-    - fe80::ccfe:8fff:febe:7949
-    - fe80::78ac:baff:fe63:5812
-    - fe80::3cf5:71ff:fedb:e5a9
-    tunneledNetworkingMode: false
+    - 192.168.203.10
+    - 192.168.203.192
   controllerManager: {}
   extensions:
     helm:
@@ -72,9 +63,6 @@ spec:
     nodeLocalLoadBalancing:
       envoyProxy:
         apiServerBindPort: 7443
-        image:
-          image: quay.io/k0sproject/envoy-distroless
-          version: v1.24.1
         konnectivityServerBindPort: 7132
       type: EnvoyProxy
     podCIDR: 10.244.0.0/16
@@ -84,7 +72,9 @@ spec:
   storage:
     etcd:
       externalCluster: null
-      peerAddress: 192.168.203.80
+      peerAddress: 192.168.203.192
+      extraArgs:
+        listen-client-urls: https://127.0.0.1:2379,https://192.168.203.192:2379
     type: etcd
   telemetry:
     enabled: true

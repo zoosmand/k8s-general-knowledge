@@ -1,0 +1,32 @@
+service k0s_ingress_prod
+{
+    type                = UNLISTED
+    flags               = IPv4
+    socket_type         = stream
+    wait                = no
+    protocol            = tcp
+    bind                = 192.168.203.77
+    port                = 50443
+    user                = nobody
+    group               = nobody
+    disable             = no
+    redirect            = 10.203.10.1 443
+    log_type            = FILE /var/log/redirect-50443.log
+    only_from           = 0.0.0.0/0
+}
+service k0s_ingress_dev
+{
+    type                = UNLISTED
+    flags               = IPv4
+    socket_type         = stream
+    wait                = no
+    protocol            = tcp
+    bind                = 192.168.203.77
+    port                = 58443
+    user                = nobody
+    group               = nobody
+    disable             = no
+    redirect            = 10.203.10.2 443
+    log_type            = FILE /var/log/redirect-58443.log
+    only_from           = 0.0.0.0/0
+}
