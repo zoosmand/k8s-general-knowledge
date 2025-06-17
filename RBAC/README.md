@@ -1,140 +1,208 @@
 # Kubernetes RBAC
 
 ## RBAC User/Group Administration
-### Create a user
-#### Simple user with no group
-~~~ bash
-k0s kubeconfig create zoosman
-~~~
 
-#### A user in group
-~~~ bash
-# a cluster admin
-k0s kubeconfig create --groups "system:masters" admin > ~/.kube/admin.config
-# a user with no privileges at the moment, included into a group
-k0s kubeconfig create --groups "default:operators" zoosman > ~/.kube/zoosman.config
-~~~
+### Roles
 
-### Crate a role
-~~~ bash
-cat << EOF > ./role_default_operators.yaml
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-
-metadata:
-  namespace: default
-  name: operator
-
-rules:
-  - apiGroups: ["", "apps", "extensions"]
-    resources: ["deployments", "daemonsets", "services", "statefulsets", "pods", "replicasets"]
-    verbs: ["*"]
-
-  - apiGroups: [""]
-    resources: ["pods/ephemeralcontainers", "pods/log", "pods/attach"]
-    verbs: ["*"]
-
-  - apiGroups: [""]
-    resources: ["persistentvolumeclaims"]
-    verbs: ["*"]
-
-  - apiGroups: [""]
-    resources: ["configmaps", "secrets"]
-    verbs: ["get", "list", "watch", "create", "update", "delete"]
-
-  - apiGroups: ["batch"]
-    resources: ["cronjobs", "jobs"]
-    verbs: ["*"]
-
-  - apiGroups: ["extensions"]
-    resources: [""]
-    verbs: [""]
-
-  - apiGroups: ["", "autoscaling"]
-    resources: ["replicationcontrollers", "horizontalpodautoscalers"]
-    verbs: ["get", "list", "watch"]
-
-  - apiGroups: ["rbac.authorization.k8s.io"]
-    resources: ["roles", "rolebindings"]
-    verbs: ["list"]
-
-...
-EOF
-
-kubectl apply -f ./role_default_operators.yaml
-~~~
-
-### Bind roles
-#### Role bindings in default namespace
-~~~ bash
-cat << EOF > ./rolebinding_default_operator_with_operators_group.yaml
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-
-metadata:
-  name: operators
-  namespace: default
-
-subjects:
-- kind: Group
-  name: default:operators
-
-roleRef:
+* Create an "operator" role in the "default" namespace
+  ~~~ bash
+  cat << EOF | kubectl apply -f -
+  ---
   kind: Role
-  name: operator
+  apiVersion: rbac.authorization.k8s.io/v1
 
-...
-EOF
+  metadata:
+    namespace: default
+    name: operator
 
-kubectl apply -f ./rolebinding_default_operator_with_operators_group.yaml
-~~~
+  rules:
+    - apiGroups: ["", "apps", "extensions"]
+      resources: ["deployments", "daemonsets", "services", "statefulsets", "pods", "replicasets"]
+      verbs: ["*"]
 
-#### Cluster role bindings with a user
-~~~ bash
-cat << EOF > ./clusterrolebinding_role_view_with_user_auditor.yaml
+    - apiGroups: [""]
+      resources: ["pods/ephemeralcontainers", "pods/log", "pods/attach"]
+      verbs: ["*"]
+
+    - apiGroups: [""]
+      resources: ["persistentvolumeclaims"]
+      verbs: ["*"]
+
+    - apiGroups: [""]
+      resources: ["configmaps", "secrets"]
+      verbs: ["get", "list", "watch", "create", "update", "delete"]
+
+    - apiGroups: ["batch"]
+      resources: ["cronjobs", "jobs"]
+      verbs: ["*"]
+
+    - apiGroups: ["extensions"]
+      resources: [""]
+      verbs: [""]
+
+    - apiGroups: ["", "autoscaling"]
+      resources: ["replicationcontrollers", "horizontalpodautoscalers"]
+      verbs: ["get", "list", "watch"]
+
+    - apiGroups: ["rbac.authorization.k8s.io"]
+      resources: ["roles", "rolebindings"]
+      verbs: ["list"]
+
+  ...
+  EOF
+  ~~~
+
+* Delete the "operator" Role from the "default" namespace
+  ~~~ bash
+  kubectl delete role/operator -n default
+  ~~~
+
 ---
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
 
-metadata:
-  name: cluster-viewer
+### Cluster Roles
 
-subjects:
-- kind: User
-  name: auditor
-
-roleRef:
+* Create an "operator" ClusterRole
+  ~~~ bash
+  cat << EOF | kubectl apply -f -
+  ---
   kind: ClusterRole
-  name: view
+  apiVersion: rbac.authorization.k8s.io/v1
 
-...
-EOF
+  metadata:
+    name: operator
 
-kubectl apply -f ./clusterrolebinding_role_view_with_user_auditor.yaml
-~~~
+  rules:
+    - apiGroups: ["", "apps", "extensions"]
+      resources: ["deployments", "daemonsets", "services", "statefulsets", "pods", "replicasets"]
+      verbs: ["*"]
 
-#### Cluster role bindings with a group
-~~~ bash
-cat << EOF > ./clusterrolebinding_role_view_with_group_auditors.yaml
+    - apiGroups: [""]
+      resources: ["pods/ephemeralcontainers", "pods/log", "pods/attach"]
+      verbs: ["*"]
+
+    - apiGroups: [""]
+      resources: ["persistentvolumeclaims"]
+      verbs: ["*"]
+
+    - apiGroups: [""]
+      resources: ["configmaps", "secrets"]
+      verbs: ["get", "list", "watch", "create", "update", "delete"]
+
+    - apiGroups: ["batch"]
+      resources: ["cronjobs", "jobs"]
+      verbs: ["*"]
+
+    - apiGroups: ["extensions"]
+      resources: [""]
+      verbs: [""]
+
+    - apiGroups: ["", "autoscaling"]
+      resources: ["replicationcontrollers", "horizontalpodautoscalers"]
+      verbs: ["get", "list", "watch"]
+
+    - apiGroups: ["rbac.authorization.k8s.io"]
+      resources: ["roles", "rolebindings"]
+      verbs: ["list"]
+
+  ...
+  EOF
+  ~~~
+
+* Delete the "operator" ClusterRole
+  ~~~ bash
+  kubectl delete clusterrole/operator
+  ~~~
+
 ---
-kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
 
-metadata:
-  name: cluster-viewers
+### Binding Roles/ClusterRoles
 
-subjects:
-- kind: Group
-  name: system:auditors
+* Bind the Role "operator" with the group "default:operators" in the "default" namespace
+  ~~~ bash
+  cat << EOF | kubectl apply -f -
+  ---
+  kind: RoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1
 
-roleRef:
-  kind: ClusterRole
-  name: view
+  metadata:
+    name: operators
+    namespace: default
 
-...
-EOF
+  subjects:
+  - kind: Group
+    name: default:operators
 
-kubectl apply -f ./clusterrolebinding_role_view_with_group_auditors.yaml
-~~~
+  roleRef:
+    kind: Role
+    name: operator
 
+  ...
+  EOF
+  ~~~
+
+* Bind the Role "operator" with the user "operator" and the group "default:operators" in the "default" namespace
+  ~~~ bash
+  cat << EOF | kubectl apply -f -
+  ---
+  kind: RoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1
+
+  metadata:
+    name: operators
+    namespace: default
+
+  subjects:
+  - kind: User
+    name: operator
+  - kind: Group
+    name: default:operators
+
+  roleRef:
+    kind: Role
+    name: operator
+
+  ...
+  EOF
+  ~~~
+
+* Delete the binding of "operator" Role from the "default" namespace
+  ~~~ bash
+  kubectl delete rolebindings/operators -n default
+  ~~~
+
+---
+
+
+* Bind Cluster Role "operator" with the user "operator" and the group "system:operators"
+  ~~~ bash
+  cat << EOF | kubectl apply -f -
+  ---
+  kind: ClusterRoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1
+
+  metadata:
+    name: cluster-operators
+
+  subjects:
+  - kind: User
+    name: operator
+  - kind: Group
+    name: system:operators
+
+  roleRef:
+    kind: ClusterRole
+    name: operator
+
+  ...
+  EOF
+  ~~~
+
+* Delete the binding of "operator" ClusterRole
+  ~~~ bash
+  kubectl delete clusterrolebindings/cluster-operators
+  ~~~
+
+
+---
+
+&copy; 2017-2025, Askug Ltd.

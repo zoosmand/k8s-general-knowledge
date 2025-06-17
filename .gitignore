@@ -30,3 +30,5 @@ sasl_passwd*
 
 # SSL key dir
 keys
+
+*.config
