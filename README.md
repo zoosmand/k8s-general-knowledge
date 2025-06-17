@@ -74,9 +74,9 @@
       export KUBECONFIG=~/.kube/admin.config
       ~~~
     - join several configuration files
-    ~~~ bash
-    export KUBECONFIG=~/.kube/cluster-admin.config:~/.kube/operator.config
-    ~~~
+      ~~~ bash
+      export KUBECONFIG=~/.kube/cluster-admin.config:~/.kube/operator.config
+      ~~~
 
   * Merge several configs into a single one
     ~~~ bash
@@ -86,7 +86,7 @@
 
   * Usage of a particular config e.g.
     ~~~ bash 
-    kubectl get all --kubeconfig ~/.kube/zoosman.config 
+    kubectl get all --kubeconfig ~/.kube/operator.config 
     ~~~
 
 ---

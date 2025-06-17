@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: pgtest-01
-        image: reg.docker.askug.net:5000/pushgateway-test-sb-11:0.0.2
+        image: hub.askug.net/pushgateway-test-sb-11:0.0.2
         args: ["http://sb-11-monitoring-srv.monitoring.svc.cluster.local:9091"]
       restartPolicy: Never
 

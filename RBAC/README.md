@@ -85,6 +85,10 @@
       verbs: ["*"]
 
     - apiGroups: [""]
+      resources: ["persistentvolumes", "persistentvolumes/status"]
+      verbs: ["*"]
+
+    - apiGroups: [""]
       resources: ["configmaps", "secrets"]
       verbs: ["get", "list", "watch", "create", "update", "delete"]
 
@@ -102,6 +106,10 @@
 
     - apiGroups: ["rbac.authorization.k8s.io"]
       resources: ["roles", "rolebindings"]
+      verbs: ["list"]
+
+    - apiGroups: ["rbac.authorization.k8s.io"]
+      resources: ["clusterroles", "clusterrolebindings"]
       verbs: ["list"]
 
   ...
@@ -173,7 +181,7 @@
 ---
 
 
-* Bind Cluster Role "operator" with the user "operator" and the group "system:operators"
+* Bind Cluster Role "operator" with the user "operator" and, the group "system:operators", and the service account "clister-api-operator"
   ~~~ bash
   cat << EOF | kubectl apply -f -
   ---
@@ -182,12 +190,18 @@
 
   metadata:
     name: cluster-operators
+    annotations:
+      rbac.authorization.kubernetes.io/autoupdate: "true"
 
   subjects:
   - kind: User
     name: operator
+    namespace: default
   - kind: Group
     name: system:operators
+  - kind: ServiceAccount
+    name: cluster-api-operator
+    namespace: kube-system
 
   roleRef:
     kind: ClusterRole
