@@ -6,6 +6,8 @@ metadata:
   labels:
     app: mon-test
 spec:
+  nodeSelector:
+    kubernetes.io/hostname: hvm-zq
   containers:
   - image: alpine:3.18
     name: test-pod-01
@@ -35,7 +37,7 @@ spec:
   selector:
     app: mon-test
   type: LoadBalancer
-  loadBalancerIP: 10.203.10.30
+  loadBalancerIP: 10.220.65.7
   ports:
     - protocol: TCP
       name: "ssh-22"
