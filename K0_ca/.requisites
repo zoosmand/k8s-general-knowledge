@@ -1,4 +1,5 @@
-K8S_SRV_PREFIX='/C=CY/ST=Cyprus/L=Limassol/O=Askug Ltd./OU=Kubernetes Cluster Infrastructure'
+K8S_SRV_PREFIX='/C=CY/ST=Cyprus/L=Limassol/O=Askug Ltd./OU=Kubernetes Infrastructure'
 DAYS=365
 BASE_DOMAIN='askug.net'
 K8S_DOMAIN="kube.$BASE_DOMAIN"
+COMMENT_PREFIX="Askug Ltd. Prod Environment"
