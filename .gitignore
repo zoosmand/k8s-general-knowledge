@@ -32,3 +32,4 @@ sasl_passwd*
 keys
 
 *.config
+pki/
