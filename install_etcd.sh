@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ETCD_VERSION=${ETCD_VERSION:-v3.3.1}
+ETCD_VERSION=${ETCD_VERSION:-v3.5.21}
 
 curl -L https://github.com/coreos/etcd/releases/download/$ETCD_VERSION/etcd-$ETCD_VERSION-linux-amd64.tar.gz -o etcd-$ETCD_VERSION-linux-amd64.tar.gz
 

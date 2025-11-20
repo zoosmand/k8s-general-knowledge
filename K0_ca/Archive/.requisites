@@ -1,0 +1,4 @@
+K8S_SRV_PREFIX='/C=CY/ST=Cyprus/L=Limassol/O=Askug Ltd./OU=Kubernetes Cluster Infrastructure'
+DAYS=365
+BASE_DOMAIN='askug.net'
+K8S_DOMAIN="kube.$BASE_DOMAIN"
