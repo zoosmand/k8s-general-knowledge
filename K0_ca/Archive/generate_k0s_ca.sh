@@ -8,12 +8,14 @@ source ./.requisites
 K8S_SRV_PREFIX="$K8S_SRV_PREFIX/OU=Kubernetes Cluster Certificate Authority"
 
 # --- Generate K0s CA --- #
-echo "K0s CA"
+COMMENT="k0s Certificate Authority"
+echo $COMMENT
+
 KEY_PREFIX=ca
 KEY_STORAGE=./CA
 SUBJECT_K0S_CA="$K8S_SRV_PREFIX/CN=$KEY_PREFIX.$K8S_DOMAIN"
 
-SUBJECT_FEATURE_01="nsComment=Askug Ltd. Kubernetes k0s Certificate Authority"
+SUBJECT_FEATURE_01="nsComment=${COMMENT_PREFIX} ${COMMENT}"
 SUBJECT_FEATURE_02='basicConstraints=critical,CA:true'
 SUBJECT_FEATURE_03='keyUsage=critical,keyCertSign,cRLSign'
 
